@@ -1,26 +1,127 @@
-@import "tailwindcss";
+/* src/app/globals.css */
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html, body {
+  font-family: sans-serif;
+  scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* HEADER */
+header {
+  background: #110711;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  height: 70px;
+  align-items: center;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 3rem;
+  height: 100%;
+  color: white;
 }
+
+.logo img {
+    height: 100px;
+    object-fit: contain;
+    align-items: center;
+}
+
+.nav-links {
+    display:flex;
+    gap: 2rem;
+    align-items: center;
+    height: 100%;
+}
+
+nav a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+nav a:hover {
+  color: #0070f3;
+}
+
+/* SECTION */
+section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* HERO */
+#home {
+  background-image: url('/fundo.png');
+  background-size: cover;
+  background-position: center;
+  justify-content: flex-end;
+  padding-right: 5rem;
+  color: white;
+}
+
+
+.hero-content {
+  max-width: 700px;
+  text-align: left;
+}
+
+/*titulo texto */
+#home h1 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  /* text-align: left; */
+}
+
+/* sub texto */
+#home p {
+  font-size: 22px;
+  /* text-align: left; */
+}
+
+/* OUTRAS SEÇÕES */
+#sobre,
+#produtos,
+#contato {
+  background: #f3f3f3;
+}
+
+#servicos {
+  background: white;
+}
+
+.section-content {
+  max-width: 600px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1.1rem;
+}
+
+.destaque {
+    color: #00C2FF;
+}   
