@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from 'next/link';
+import { BlockList } from "net";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -18,9 +20,11 @@ export default function Header() {
     <>
       <header className={scrolled ? "header shrink" : "header"}>
         <div className="container">
-          <img src="/logo.png" className="logo" alt="Logo da empresa" />
+          <Link href="/" scroll={true}>
+          <img src="/logo.png" className="logo" alt="Logo da empresa" style={{cursor: "pointer", display: "block"}}/>
+          </Link>
           <nav>
-            <a href="/home">Home</a>
+            <Link href="/" scroll={true}>Home</Link>
             <a href="/sobre">Sobre</a>
             <a href="/produtos">Produtos</a>
             <a href="/servicos">Serviços</a>
@@ -30,7 +34,8 @@ export default function Header() {
 
         <style jsx>{`
           .header {
-            background: #110711;
+            background: rgba(17, 7, 17, 0.9);
+            backdrop-filter: blur(4px);
             position: fixed;
             top: 0;
             left: 0;
@@ -59,6 +64,7 @@ export default function Header() {
           }
 
           .logo {
+            display: block;
             height: 100px;
             object-fit: contain;
             transition: all 0.3s ease;
@@ -75,13 +81,21 @@ export default function Header() {
 
           nav a {
             text-decoration: none;
-            color: inherit;
+            color: white;
             font-weight: 500;
             transition: color 0.2s ease;
           }
 
           nav a:hover {
             color: #0070f3;
+          }
+
+          nav a:visited,
+          nav a:active,
+          nav a:focus {
+            color: white;
+            outline: none;
+            box-shadow: none;
           }
         `}</style>
       </header>

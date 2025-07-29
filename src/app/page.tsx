@@ -1,9 +1,11 @@
 "use client";
 
+import Link from 'next/link';
+
 export default function LandingPage() {
   return (
     <>
-      <section className="hero">
+      <section id="topo" className="hero">
         <div className="hero-content">
           <h1>
             IAgora Sua Parceira em Soluções{" "}
@@ -47,7 +49,9 @@ export default function LandingPage() {
               </h2>
               <div className="colaboradores-inline">
                 <span>Descubra quem está por trás do sucesso</span>
+                <Link href="/colaboradores">
                 <button>Colaboradores</button>
+                </Link>
               </div>
             </div>
             <div className="texto-roxo">
@@ -223,7 +227,8 @@ export default function LandingPage() {
         }
 
         .footer-final {
-          background-color: #110711;
+          background: rgba(17, 7, 17, 0.9);
+          backdrop-filter: blur(4px);
           color: white;
           display: flex;
           justify-content: space-between;
