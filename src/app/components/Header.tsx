@@ -27,7 +27,7 @@ export default function Header() {
             <Link href="/" scroll={true}>Home</Link>
             <a href="/sobre">Sobre</a>
             <a href="/produtos">Produtos</a>
-            <a href="/servicos">Serviços</a>
+            <Link href="/Desenvolvimento">Serviços</Link>
             <a href="/contato">Contato</a>
           </nav>
         </div>

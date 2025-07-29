@@ -1,5 +1,7 @@
 "use client";
 
+import Footer from "../components/Footer";
+
 export default function Colaboradores() {
   return (
     <>
@@ -48,6 +50,7 @@ export default function Colaboradores() {
           </div>
         </section>
       </main>
+      <Footer />
 
       <style jsx>{`
         main {
