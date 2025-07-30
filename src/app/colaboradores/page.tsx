@@ -1,8 +1,24 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Footer from "../components/Footer";
 
 export default function Colaboradores() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const cards = ["Card 1", "Card 2", "Card 3", "Card 4", "Card 5"];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => {
+        const maxIndex = cards.length - 4;
+        if (prev >= maxIndex) return 0;
+        return prev + 1;
+      });
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [cards.length]);
+
   return (
     <>
       <main>
@@ -12,11 +28,19 @@ export default function Colaboradores() {
             juntos, construímos resultados que transformam
           </h1>
 
-          <div className="cards-container">
-            <div className="card">Card 1</div>
-            <div className="card">Card 2</div>
-            <div className="card">Card 3</div>
-            <div className="card">Card 4</div>
+          <div className="cards-container-wrapper">
+            <div
+              className="cards-container"
+              style={{
+                transform: `translateX(-${currentIndex * (270 + 30)}px)`,
+              }}
+            >
+              {cards.map((card, idx) => (
+                <div key={idx} className="card">
+                  {card}
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -24,28 +48,27 @@ export default function Colaboradores() {
           <div className="content-wrapper">
             <div className="left-side">
               <h2 className="side-title">Nossos Colaboradores</h2>
-              <p className="side-text">No cerne da excelência em transporte e
-                                        soluções logísticas, a união estratégica
-                                        de Negreira, Distribuidora Safari, Velpack,
-                                        STE Fios e GR5 Logística nos posiciona
-                                        como seu parceiro ideal. Juntos,
-                                        otimizamos cadeias de suprimentos com
-                                        expertise diversificada e agilidade
-                                        incomparável, garantindo que sua
-                                        demanda seja atendida com a máxima
-                                        eficiência e profissionalismo.</p>
+              <p className="side-text">
+                No cerne da excelência em transporte e soluções logísticas, a
+                união estratégica de Negreira, Distribuidora Safari, Velpack,
+                STE Fios e GR5 Logística nos posiciona como seu parceiro ideal.
+                Juntos, otimizamos cadeias de suprimentos com expertise
+                diversificada e agilidade incomparável, garantindo que sua
+                demanda seja atendida com a máxima eficiência e profissionalismo.
+              </p>
             </div>
 
             <div className="vertical-line" />
 
             <div className="right-side">
               <h2 className="side-title">Que tal se juntar a nós?</h2>
-              <p className="side-text">Na IAgora, convidamos você a elevar seu
-                                        padrão digital. Com um portfólio que já
-                                        ultrapassa 10 milhões em aplicações,
-                                        desenvolvemos sites e plataformas
-                                        estrategicamente estruturadas para otimizar,
-                                        agilizar e impulsionar o seu progresso com excelência.</p>
+              <p className="side-text">
+                Na IAgora, convidamos você a elevar seu padrão digital. Com um
+                portfólio que já ultrapassa 10 milhões em aplicações,
+                desenvolvemos sites e plataformas estrategicamente estruturadas
+                para otimizar, agilizar e impulsionar o seu progresso com
+                excelência.
+              </p>
             </div>
           </div>
         </section>
@@ -71,11 +94,17 @@ export default function Colaboradores() {
           color: #110711;
         }
 
+        .cards-container-wrapper {
+          overflow: hidden;
+          width: calc(270px * 4 + 30px * 3); /* largura dos 4 cards visíveis + gaps */
+          margin: 0 auto;
+        }
+
         .cards-container {
           display: flex;
-          justify-content: center;
           gap: 30px;
-          flex-wrap: wrap;
+          transition: transform 0.6s ease-in-out;
+          width: max-content;
         }
 
         .card {
@@ -89,6 +118,7 @@ export default function Colaboradores() {
           justify-content: center;
           font-weight: 600;
           font-size: 18px;
+          flex-shrink: 0;
         }
 
         .bottom-section {
@@ -110,7 +140,8 @@ export default function Colaboradores() {
           position: relative;
         }
 
-        .left-side, .right-side {
+        .left-side,
+        .right-side {
           width: 45%;
           padding: 20px;
           display: flex;
@@ -125,13 +156,13 @@ export default function Colaboradores() {
           font-size: 36px;
           font-weight: bold;
           margin-bottom: 10px;
-          color: #0074BB;
+          color: #0074bb;
         }
 
         .side-text {
           font-size: 22px;
           line-height: 1.5;
-          color: #FFFFFF;
+          color: #ffffff;
           justify-content: left;
           text-align: left;
         }

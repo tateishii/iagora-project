@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Link from 'next/link';
-import { BlockList } from "net";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -21,14 +20,14 @@ export default function Header() {
       <header className={scrolled ? "header shrink" : "header"}>
         <div className="container">
           <Link href="/" scroll={true}>
-          <img src="/logo.png" className="logo" alt="Logo da empresa" style={{cursor: "pointer", display: "block"}}/>
+            <img src="/logo.png" className="logo" alt="Logo da empresa" style={{ cursor: "pointer", display: "block" }} />
           </Link>
           <nav>
-            <Link href="/" scroll={true}>Home</Link>
-            <a href="/sobre">Sobre</a>
-            <a href="/produtos">Produtos</a>
-            <Link href="/Desenvolvimento">Serviços</Link>
-            <a href="/contato">Contato</a>
+            <Link href="/" scroll={true} className="link">Home</Link>
+            <Link href="/sobre" className="link">Sobre</Link>
+            <Link href="/produtos" className="link">Produtos</Link>
+            <Link href="/Desenvolvimento" className="link">Serviços</Link>
+            <Link href="/contato" className="link">Contato</Link>
           </nav>
         </div>
 
@@ -79,24 +78,6 @@ export default function Header() {
             gap: 2rem;
           }
 
-          nav a {
-            text-decoration: none;
-            color: white;
-            font-weight: 500;
-            transition: color 0.2s ease;
-          }
-
-          nav a:hover {
-            color: #0070f3;
-          }
-
-          nav a:visited,
-          nav a:active,
-          nav a:focus {
-            color: white;
-            outline: none;
-            box-shadow: none;
-          }
         `}</style>
       </header>
     </>
