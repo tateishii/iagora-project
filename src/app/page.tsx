@@ -1,8 +1,23 @@
 "use client";
 
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import Footer from './components/Footer';
 
 export default function LandingPage() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => {
+        if (prevIndex === 2) return 0;
+        return prevIndex + 1;
+      });
+    }, 3000); //3 segundos
+    return () => clearInterval(interval);
+  }, []);
+
+
   return (
     <>
       <section id="topo" className="hero">
@@ -23,11 +38,17 @@ export default function LandingPage() {
       {/* Page ao descer*/}
       <section className="bloco-colorido">
         <div className="parte-branca">
-          <div className="cards-container">
-            <div className="card"></div>
-            <div className="card"></div>
+          <div className="cards-wrapper">
+            <div
+              className="cards-container"
+              style={{ transform: `translateX(-${currentIndex * (286 + 32)}px)` }}
+            >
+              <div className="card">Card 1</div>
+              <div className="card">Card 2</div>
+              <div className="card">Card 3</div>
+              <div className="card">Card 4</div>
+            </div>
           </div>
-
 
           <div className="texto-direita">
             <h2>Por que nós?</h2>
@@ -50,7 +71,7 @@ export default function LandingPage() {
               <div className="colaboradores-inline">
                 <span>Descubra quem está por trás do sucesso</span>
                 <Link href="/colaboradores">
-                <button>Colaboradores</button>
+                  <button>Colaboradores</button>
                 </Link>
               </div>
             </div>
@@ -66,20 +87,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <footer className="footer-final">
-        <div className="footer-left">
-          <h3>IAgora Tecnologia</h3>
-          <p>© 2025 Todos os direitos reservados.</p>
-        </div>
-        <div className="footer-right">
-          <a href="https://www.instagram.com/iagora.tec?igsh=MTZmYm5nbHJqcHNucw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <img src="/instagram-icon.svg" alt="Instagram"/>
-          </a>
-          <a href="/https://wa.me/11956538444" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-            <img src="/whatsapp-icon.svg" alt="WhatsApp"/>
-          </a>
-        </div>
-      </footer>
+      <Footer />
 
       <style jsx>{`
         .hero {
@@ -131,28 +139,18 @@ export default function LandingPage() {
           gap: 4rem;
         }
 
-        .texto-direita {
-          max-width: 500px;
-        }    
-
-        .texto-direita h2 {
-          color: #0074bb;
-          font-size: 36px;
-          font-weight: bold;
-          margin-bottom: h2;
-        }
-
-        .texto-direita p {
-          font-size: 21;
-          font-weight: bold;
-          line-height: 1.6rem;
-          color: #171717;
+        .cards-wrapper {
+          overflow: hidden;
+          width: 100%;
         }
 
         .cards-container {
           display: flex;
           gap: 2rem;
+          transition: transform 0.6s ease-in-out;
+          width: max-content;
         }
+
 
         .card {
           width: 286px;
@@ -160,6 +158,29 @@ export default function LandingPage() {
           background-color: #f5f5f5;
           border-radius: 20px;
           box-shadow: 0 4px 12px rgba(4, 0, 0, 1);
+          box-sizing: border-box;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+
+        .texto-direita {
+          max-width: 40%;
+        }
+
+        .texto-direita h2 {
+          color: #0074bb;
+          font-size: 36px;
+          font-weight: bold;
+          margin-bottom: 1rem;
+        }
+
+        .texto-direita p {
+          font-size: 21px;
+          font-weight: bold;
+          line-height: 1.6rem;
+          color: #171717;
         }
 
         .parte-roxa {
@@ -225,56 +246,6 @@ export default function LandingPage() {
         .colaboradores-inline button:hover {
           background-color: #cc00cc;
         }
-
-        .footer-final {
-          background: rgba(17, 7, 17, 0.9);
-          backdrop-filter: blur(4px);
-          color: white;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 1rem 3rem;
-          font-family: 'Arial', sans-serif;
-          flex-wrap: wrap;
-          gap: 1rem;
-        }
-
-        .footer-left h3 {
-          margin: 0 0 0.3rem 0;
-          font-weight: bold;
-          font-size: 20px;
-        }
-
-        .footer-left p {
-          margin: 0;
-          font-size: 14px;
-          opacity: 0.7;
-        }
-
-        .footer-right a {
-          margin-left: 1rem;
-          display: inline-block;
-          transition: opacity 0.3s ease;
-        }
-
-        .footer-right a:hover {
-          opacity: 0.7;
-        }
-
-        .footer-right img {
-          width: 45px;
-          height: 45px;
-          object-fit: contain;
-          cursor: pointer;
-        }
-
-        .footer-right img.whatsapp{
-          width: 40px;
-          height: 40px;
-          object-fit: contain;
-          margin-top: 4px;
-        }
-
 
       `}</style>
     </>
