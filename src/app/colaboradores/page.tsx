@@ -71,7 +71,12 @@ export default function Colaboradores() {
               </p>
             </div>
           </div>
+
+          <div className="logo-inferior">
+            <img src="/logo.png" alt="Logo da empresa" />
+          </div>
         </section>
+
       </main>
       <Footer />
 
@@ -127,6 +132,7 @@ export default function Colaboradores() {
           display: flex;
           align-items: center;
           justify-content: center;
+          position: relative;
         }
 
         .content-wrapper {
@@ -170,8 +176,20 @@ export default function Colaboradores() {
         .vertical-line {
           width: 2px;
           background-color: white;
-          height: 60%;
+          height: 90%;
           margin: 0 40px;
+          align-self: center;
+        }
+
+        .logo-inferior {
+          position: absolute;
+          bottom: -50px;
+          right: 40px;
+        }
+
+        .logo-inferior img {
+          width: 160px;
+          height: auto;
         }
       `}</style>
     </>

@@ -9,33 +9,26 @@ export default function LandingPage() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => {
-        if (prevIndex === 2) return 0;
-        return prevIndex + 1;
-      });
-    }, 3000); //3 segundos
+      setCurrentIndex((prevIndex) => (prevIndex === 2 ? 0 : prevIndex + 1));
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
-
 
   return (
     <>
       <section id="topo" className="hero">
         <div className="hero-content">
           <h1>
-            IAgora Sua Parceira em Soluções{" "}
+            Agora Sua Parceira em Soluções{" "}
             <span className="destaque">Tecnológicas</span> Inovadoras.
           </h1>
           <p>
-            Criamos sistemas sob medida, e-commerces
-            personalizados e integrações inteligentes com ERP.
-            Acelere o crescimento do seu negócio com soluções
-            tecnológicas eficientes, seguras e escaláveis. 🚀
+            Criamos sistemas sob medida, e-commerces personalizados e integrações inteligentes com ERP.
+            Acelere o crescimento do seu negócio com soluções tecnológicas eficientes, seguras e escaláveis. 🚀
           </p>
         </div>
       </section>
 
-      {/* Page ao descer*/}
       <section className="bloco-colorido">
         <div className="parte-branca">
           <div className="cards-wrapper">
@@ -43,10 +36,17 @@ export default function LandingPage() {
               className="cards-container"
               style={{ transform: `translateX(-${currentIndex * (286 + 32)}px)` }}
             >
-              <div className="card">Card 1</div>
-              <div className="card">Card 2</div>
-              <div className="card">Card 3</div>
-              <div className="card">Card 4</div>
+              {[1, 2, 3, 4].map((num) => (
+                <div className="card" key={num}>
+                  <div className="card-content">Card {num}</div>
+                  <div className="card-overlay">
+                    <div className="overlay-content">
+                      <h3>Título {num}</h3>
+                      <p>Texto do overlay</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -55,17 +55,17 @@ export default function LandingPage() {
             <p>
               Tecnologia sob medida. inovação real, parceria confiável.
               Transformamos desafios em soluções com sistemas Web
-              inteligentes, automação RPA e plataformas CRM/ERP
-              personalizadas. Você sonha, a gente desenvolve com
-              transparência e uma equipe pronta para acelerar o seu
-              crescimento
+              inteligentes, automação RPA e plataformas CRM/ERP personalizadas.
+              Você sonha, a gente desenvolve com transparência e uma equipe pronta para acelerar o seu crescimento.
             </p>
           </div>
         </div>
+
         <div className="parte-roxa">
           <div className="conteudo-roxo">
             <div className="titulo-roxo">
-              <h2>Transformamos seu negócio<br />
+              <h2>
+                Transformamos seu negócio<br />
                 com inovação
               </h2>
               <div className="colaboradores-inline">
@@ -75,6 +75,7 @@ export default function LandingPage() {
                 </Link>
               </div>
             </div>
+
             <div className="texto-roxo">
               <p>
                 Somos especialistas em moldar seu futuro digital, desenvolvendo
@@ -151,19 +152,57 @@ export default function LandingPage() {
           width: max-content;
         }
 
-
         .card {
+          position: relative;
           width: 286px;
           height: 286px;
           background-color: #f5f5f5;
           border-radius: 20px;
           box-shadow: 0 4px 12px rgba(4, 0, 0, 1);
-          box-sizing: border-box;
           display: flex;
           justify-content: center;
           align-items: center;
+          overflow: hidden;
+          cursor: pointer;
         }
 
+        .card-content {
+          z-index: 1;
+          font-weight: bold;
+          font-size: 24px;
+        }
+
+        .card-overlay {
+          position: absolute;
+          bottom: -100%;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(55, 47, 83, 0.95);
+          color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: bottom 0.4s ease-in-out;
+          padding: 1rem;
+        }
+
+        .card:hover .card-overlay {
+          bottom: 0;
+        }
+
+        .overlay-content {
+          text-align: center;
+        }
+
+        .overlay-content h3 {
+          font-size: 20px;
+          margin-bottom: 0.5rem;
+        }
+
+        .overlay-content p {
+          font-size: 16px;
+        }
 
         .texto-direita {
           max-width: 40%;
@@ -246,7 +285,6 @@ export default function LandingPage() {
         .colaboradores-inline button:hover {
           background-color: #cc00cc;
         }
-
       `}</style>
     </>
   );
