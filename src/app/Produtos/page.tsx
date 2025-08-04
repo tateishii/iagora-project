@@ -23,7 +23,7 @@ export default function Produtos() {
                 <div className="card">
                     <div className="card-content">
                         <img src="/icon1.png" alt="Icone 1" className="card-icon" />
-                        <h3 className="card-tile">Landing Pages Personalizados</h3>
+                        <h3 className="card-title">Landing Pages Personalizados</h3>
                     </div>
                     <div className="card-overlay">
                         <div className="overlay-content">
@@ -72,7 +72,7 @@ export default function Produtos() {
 
 
         .overlay {
-          background-image: url("/devweb.png");
+          background-image: url("/fundo2.png");
           background-size: cover;
           background-position: center;
           width: 100%;
@@ -88,7 +88,7 @@ export default function Produtos() {
           content: "";
           position: absolute;
           inset: 0;
-          background-color: rgba(255, 255, 255, 0.6);
+          background-color: rgba(62, 52, 52, 0.6);
           z-index: 0;
         }
 
@@ -111,7 +111,7 @@ export default function Produtos() {
 
         .description {
           font-size: 24px;
-          color: #000;
+          color: #FFFFFF;
         }
 
         .bottom-section {
@@ -228,6 +228,11 @@ export default function Produtos() {
             font-size: 20px;
             font-weight: bold;
             color: #0074bb
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover .card-title {
+            opacity: 0;
         }
 
         .card-overlay {
