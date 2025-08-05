@@ -2,8 +2,67 @@
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { Vortex } from "../components/ui/vortex";
+import { useEffect, useRef, useState } from "react";
 
 export default function Servicos() {
+  const balloons = [
+    {
+      titulo: "Desenvolvimento Web",
+      descricao: "Criação de sites, sistemas web e plataformas sob medida para o seu negócio.",
+      style: { top: "30px", left: "6%" },
+      from: "left",
+    },
+    {
+      titulo: "Cloud Computing",
+      descricao: "Migração, gerenciamento e otimização de ambientes em nuvem como AWS, Azure e Google Cloud.",
+      style: { top: "30px", right: "-20%" },
+      from: "right",
+    },
+    {
+      titulo: "Consultoria em TI",
+      descricao: "Análise estratégica e otimização de processos tecnológicos com foco em resultados.",
+      style: { top: "250px", left: "30%" },
+      from: "left",
+    },
+    {
+      titulo: "Aplicativos Mobile",
+      descricao: "Desenvolvimento de aplicativos iOS e Android com alta performance.",
+      style: { top: "250px", right: "5%" },
+      from: "right",
+    },
+    {
+      titulo: "Suporte Técnico e Help Desk",
+      descricao: "Atendimento remoto e presencial com agilidade, confiança e SLA personalizado.",
+      style: { top: "450px", left: "53%" },
+      from: "left",
+    },
+  ];
+
+  const balloonsSectionRef = useRef<HTMLElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const section = balloonsSectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.unobserve(section);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(section);
+
+    return () => {
+      if (section) observer.unobserve(section);
+    };
+  }, []);
+
   return (
     <main>
       <Header />
@@ -19,38 +78,23 @@ export default function Servicos() {
         </div>
       </section>
 
-      <section className="balloons-section">
-        <div className="balloons-container">
-          <div className="balloon" style={{ top: "-10px", left: "0%" }}>
-            <div className="balloon-content">
-              <h3>Desenvolvimento Web</h3>
-              <p>Criação de sites, sistemas web e plataformas sob medida para o seu negócio.</p>
-            </div>
-          </div>
-          <div className="balloon" style={{ top: "-10px", right: "0%" }}>
-            <div className="balloon-content">
-              <h3>Cloud Computing</h3>
-              <p>Migração, gerenciamento e otimização de ambientes em nuvem como AWS, Azure e Google Cloud.</p>
-            </div>
-          </div>
-
-          <div className="balloon" style={{ top: "180px", left: "19%" }}>
-            <div className="balloon-content">
-              <h3>Consultoria em TI</h3>
-              <p>Análise estratégica e otimização de processos tecnológicos com foco em resultados.</p>
-            </div>
-          </div>
-          <div className="balloon" style={{ top: "180px", right: "19%" }}>
-            <div className="balloon-content">
-              <h3>Aplicativos Mobile</h3>
-              <p>Desenvolvimento de aplicativos iOS e Android com alta performance.</p>
-            </div>
-          </div>
-
-          <div className="balloon" style={{ top: "280px", left: "40%" }}>
-            <div className="balloon-content">
-              <h3>Suporte Técnico e Help Desk</h3>
-              <p>Atendimento remoto e presencial com agilidade, confiança e SLA personalizado.</p>
+      <section className="balloons-section" ref={balloonsSectionRef}>
+        <div className="balloons-wrapper">
+          <div className="vortex-container">
+            <Vortex className="vortex-background" />
+            <div className="balloons-container">
+              {balloons.map(({ titulo, descricao, style, from }, index) => (
+                <div
+                  key={index}
+                  className={`balloon ${visible ? "visible" : ""} from-${from}`}
+                  style={style}
+                >
+                  <div className="balloon-content">
+                    <h3>{titulo}</h3>
+                    <p>{descricao}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -66,7 +110,6 @@ export default function Servicos() {
         .top-section {
           position: relative;
           height: 100vh;
-          background: none;
         }
 
         .overlay {
@@ -80,6 +123,7 @@ export default function Servicos() {
           align-items: center;
           justify-content: flex-start;
           position: relative;
+          z-index: 1;
         }
 
         .overlay::before {
@@ -88,6 +132,18 @@ export default function Servicos() {
           inset: 0;
           background-color: rgba(22, 26, 50, 0.6);
           z-index: 0;
+        }
+
+        .overlay::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 250px;
+          background: linear-gradient(to bottom, rgba(22, 26, 50, 0) 0%, rgba(22, 26, 50, 0.3) 50%, rgba(0, 0, 0, 0.7) 80%, rgba(0, 0, 0, 1) 100%);
+          pointer-events: none;
+          z-index: 2;
         }
 
         .content {
@@ -105,31 +161,54 @@ export default function Servicos() {
 
         .description {
           font-size: 24px;
-          color: #ffffffff;
+          color: #fff;
         }
 
         .balloons-section {
-          position: relative;
           background: linear-gradient(135deg, #1a084dff, #8b7979);
-          padding-top: 60px;
-          padding-bottom: 80px;
-          overflow: visible; 
-          min-height: 420px; 
+          position: relative;
+          overflow: hidden;
+          height: 700px;
+        }
+
+        .balloons-wrapper {
+          position: relative;
+          width: 100%;
+          height: 100%;
+        }
+
+        .vortex-container {
+          position: relative;
+          width: 100%;
+          height: 100%;
+        }
+
+        .vortex-background {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 0;
+          pointer-events: none;
         }
 
         .balloons-container {
-          position: relative;
+          position: absolute;
+          top: 0;
+          left: 0;
           width: 100%;
           max-width: 1200px;
-          height: 400px;
+          height: 100%;
           margin: 0 auto;
+          z-index: 1;
         }
 
         .balloon {
           position: absolute;
           width: 240px;
           min-height: 160px;
-          background-color: white;
+          background-color: rgba(255, 255, 255, 0.2);
           border-radius: 16px;
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
           padding: 20px;
@@ -139,6 +218,30 @@ export default function Servicos() {
           flex-direction: column;
           justify-content: center;
           text-align: center;
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          border: 2px solid rgba(255, 255, 255, 0.3);
+          animation: borderColorShift 8s linear infinite, float 4s ease-in-out infinite;
+          color: #fff;
+
+          /* Start hidden & shifted */
+          opacity: 0;
+          transform: translateX(0);
+          transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        /* Animation directions */
+        .balloon.from-left {
+          transform: translateX(-50px);
+        }
+        .balloon.from-right {
+          transform: translateX(50px);
+        }
+
+        /* When visible, reset transform & show */
+        .balloon.visible {
+          opacity: 1;
+          transform: translateX(0);
         }
 
         .balloon:hover {
@@ -147,23 +250,21 @@ export default function Servicos() {
         }
 
         .balloon-content {
-          color: #000;
           font-size: 16px;
           line-height: 1.5;
-          word-break: break-word;
-          padding: 0;
-          margin: 0 auto;
         }
 
         .balloon-content h3 {
           font-size: 22px;
           margin-bottom: 10px;
           font-weight: 700;
+          color: #fff;
         }
 
         .balloon-content p {
           font-size: 16px;
           margin: 0;
+          color: #fff;
         }
 
         @keyframes float {
@@ -175,6 +276,24 @@ export default function Servicos() {
           }
           100% {
             transform: translateY(0px);
+          }
+        }
+
+        @keyframes borderColorShift {
+          0% {
+            border-color: rgba(255, 255, 255, 0.3);
+          }
+          25% {
+            border-color: rgba(255, 100, 100, 0.5);
+          }
+          50% {
+            border-color: rgba(100, 255, 100, 0.5);
+          }
+          75% {
+            border-color: rgba(100, 100, 255, 0.5);
+          }
+          100% {
+            border-color: rgba(255, 255, 255, 0.3);
           }
         }
       `}</style>
