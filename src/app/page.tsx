@@ -1,18 +1,38 @@
 "use client";
 
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import Footer from './components/Footer';
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import Footer from "./components/Footer";
+import AnimatedSection from "./components/AnimatedSection";
+import Simple3DCard from "./components/Simple3DCard";
 
 export default function LandingPage() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const cards = [
+    { id: 1, href: "/Produtos", imgSrc: "/landingpage.png" },
+    { id: 2, href: "/Produtos", imgSrc: "/erpsolu.png" },
+    { id: 3, href: "/Produtos", imgSrc: "/pcpsolu.png" },
+    { id: 4, href: "/Produtos", imgSrc: "/sla.png" },
+  ];
+
+  const cardWidth = 320; 
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex === 2 ? 0 : prevIndex + 1));
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
+  if (isPaused) return;
+
+  const interval = setInterval(() => {
+    setCurrentIndex((prev) => {
+      const visibleCount = 2;
+      const maxIndex = cards.length - visibleCount;
+
+      return prev >= maxIndex ? 0 : prev + 1;
+    });
+  }, 3000);
+
+  return () => clearInterval(interval);
+}, [cards.length, isPaused]);
 
   return (
     <>
@@ -23,40 +43,42 @@ export default function LandingPage() {
             <span className="destaque">Tecnológicas</span> Inovadoras.
           </h1>
           <p>
-            Criamos sistemas sob medida, e-commerces personalizados e integrações inteligentes com ERP.
-            Acelere o crescimento do seu negócio com soluções tecnológicas eficientes, seguras e escaláveis. 🚀
+            Criamos sistemas sob medida, e-commerces personalizados e integrações inteligentes com ERP. Acelere o crescimento do seu negócio com soluções tecnológicas eficientes, seguras e escaláveis. 🚀
           </p>
         </div>
       </section>
 
       <section className="bloco-colorido">
         <div className="parte-branca">
-          <div className="cards-wrapper">
+          <div className="carousel-wrapper">
             <div
               className="cards-container"
-              style={{ transform: `translateX(-${currentIndex * (286 + 32)}px)` }}
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+              style={{
+                transform: `translateX(-${currentIndex * cardWidth}px)`,
+              }}
             >
-              {[1, 2, 3, 4].map((num) => (
-                <div className="card" key={num}>
-                  <div className="card-content">Card {num}</div>
-                  <div className="card-overlay">
-                    <div className="overlay-content">
-                      <h3>Título {num}</h3>
-                      <p>Texto do overlay</p>
-                    </div>
-                  </div>
-                </div>
+              {cards.map(({ id, href, imgSrc }) => (
+                <Simple3DCard
+                  key={id}
+                  imageSrc={imgSrc}
+                  alt={`Imagem ${id}`}
+                  href={href}
+                />
               ))}
             </div>
+
           </div>
 
           <div className="texto-direita">
             <h2>Por que nós?</h2>
             <p>
               Tecnologia sob medida. inovação real, parceria confiável.
-              Transformamos desafios em soluções com sistemas Web
-              inteligentes, automação RPA e plataformas CRM/ERP personalizadas.
-              Você sonha, a gente desenvolve com transparência e uma equipe pronta para acelerar o seu crescimento.
+              Transformamos desafios em soluções com sistemas Web inteligentes,
+              automação RPA e plataformas CRM/ERP personalizadas. Você sonha, a
+              gente desenvolve com transparência e uma equipe pronta para
+              acelerar o seu crescimento.
             </p>
           </div>
         </div>
@@ -64,10 +86,13 @@ export default function LandingPage() {
         <div className="parte-roxa">
           <div className="conteudo-roxo">
             <div className="titulo-roxo">
-              <h2>
-                Transformamos seu negócio<br />
-                com inovação
-              </h2>
+              <AnimatedSection delay={0.2}>
+                <h2>
+                  Transformamos seu negócio
+                  <br />
+                  com inovação
+                </h2>
+              </AnimatedSection>
               <div className="colaboradores-inline">
                 <span>Descubra quem está por trás do sucesso</span>
                 <Link href="/colaboradores">
@@ -77,12 +102,11 @@ export default function LandingPage() {
             </div>
 
             <div className="texto-roxo">
-              <p>
-                Somos especialistas em moldar seu futuro digital, desenvolvendo
-                soluções ágeis, otimizando suas operações e elevando sua gestão
-                com o poder da nuvem e da inteligência artificial.
-                Seu crescimento, nossa tecnologia.
-              </p>
+              <AnimatedSection delay={0.4}>
+                <p style={{ marginTop: "-10px", position: "relative", left: "20px" }}>
+                  Somos especialistas em moldar seu futuro digital, desenvolvendo soluções ágeis, otimizando suas operações e elevando sua gestão com o poder da nuvem e da inteligência artificial. Seu crescimento, nossa tecnologia.
+                </p>
+              </AnimatedSection>
             </div>
           </div>
         </div>
@@ -92,7 +116,7 @@ export default function LandingPage() {
 
       <style jsx>{`
         .hero {
-          background-image: url('/fundo.png');
+          background-image: url("/fundo.png");
           background-size: cover;
           background-position: center;
           justify-content: flex-end;
@@ -140,72 +164,21 @@ export default function LandingPage() {
           gap: 4rem;
         }
 
-        .cards-wrapper {
+        .carousel-wrapper {
           overflow: hidden;
           width: 100%;
+          position: relative;
         }
 
         .cards-container {
           display: flex;
-          gap: 2rem;
+          gap: 20px;
           transition: transform 0.6s ease-in-out;
-          width: max-content;
         }
 
-        .card {
-          position: relative;
-          width: 286px;
-          height: 286px;
-          background-color: #f5f5f5;
-          border-radius: 20px;
-          box-shadow: 0 4px 12px rgba(4, 0, 0, 1);
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          overflow: hidden;
-          cursor: pointer;
-        }
-
-        .card-content {
-          z-index: 1;
-          font-weight: bold;
-          font-size: 24px;
-        }
-
-        .card-overlay {
-          position: absolute;
-          bottom: -100%;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-color: rgba(55, 47, 83, 0.95);
-          color: white;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: bottom 0.4s ease-in-out;
-          padding: 1rem;
-        }
-
-        .card:hover .card-overlay {
-          bottom: 0;
-        }
-
-        .overlay-content {
-          text-align: center;
-        }
-
-        .overlay-content h3 {
-          font-size: 20px;
-          margin-bottom: 0.5rem;
-        }
-
-        .overlay-content p {
-          font-size: 16px;
-        }
 
         .texto-direita {
-          max-width: 40%;
+          max-width: 35%;
         }
 
         .texto-direita h2 {
@@ -224,7 +197,7 @@ export default function LandingPage() {
 
         .parte-roxa {
           flex: 4;
-          background-color: #372F53;
+          background-color: #372f53;
           display: flex;
           align-items: flex-start;
           justify-content: center;
@@ -250,7 +223,7 @@ export default function LandingPage() {
         .texto-roxo {
           max-width: 600px;
           font-size: 24px;
-          color: #FFFFFF;
+          color: #ffffff;
           line-height: 1.6;
           text-align: left;
           padding-top: 6rem;
@@ -271,7 +244,7 @@ export default function LandingPage() {
         }
 
         .colaboradores-inline button {
-          background-color: #FF00FF;
+          background-color: #ff00ff;
           color: white;
           font-size: 18px;
           font-weight: bold;

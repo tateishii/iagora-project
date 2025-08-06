@@ -2,7 +2,7 @@
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { Vortex } from "../components/ui/vortex";
+import { Boxes } from "../components/ui/Boxes";
 import { useEffect, useRef, useState } from "react";
 
 export default function Servicos() {
@@ -80,8 +80,8 @@ export default function Servicos() {
 
       <section className="balloons-section" ref={balloonsSectionRef}>
         <div className="balloons-wrapper">
-          <div className="vortex-container">
-            <Vortex className="vortex-background" />
+          <div className="boxes-container">
+            <Boxes />
             <div className="balloons-container">
               {balloons.map(({ titulo, descricao, style, from }, index) => (
                 <div
@@ -177,13 +177,13 @@ export default function Servicos() {
           height: 100%;
         }
 
-        .vortex-container {
+        .boxes-container {
           position: relative;
           width: 100%;
           height: 100%;
         }
 
-        .vortex-background {
+        .boxes-background {
           position: absolute;
           top: 0;
           left: 0;
@@ -191,7 +191,9 @@ export default function Servicos() {
           height: 100%;
           z-index: 0;
           pointer-events: none;
+          transform: translate(-40%, -60%) skewX(-48deg) skewY(14deg) scale(0.675) rotate(0deg) translateZ(0);
         }
+
 
         .balloons-container {
           position: absolute;
@@ -238,7 +240,6 @@ export default function Servicos() {
           transform: translateX(50px);
         }
 
-        /* When visible, reset transform & show */
         .balloon.visible {
           opacity: 1;
           transform: translateX(0);
