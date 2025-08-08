@@ -95,7 +95,7 @@ export default function Produtos() {
           background-position: center;
           width: 100%;
           height: 100%;
-          padding-top: 290px;
+          padding-top: 255px;
           padding-left: 80px;
           display: flex;
           align-items: flex-start;
@@ -121,16 +121,6 @@ export default function Produtos() {
           height: 140px; 
           z-index: 1;
           pointer-events: none;
-
-          background-image:
-            linear-gradient(45deg, rgba(124, 122, 122, 0.18) 25%, rgba(124, 122, 122, 0) 25%),
-            linear-gradient(-45deg, rgba(70, 69, 69, 0.14) 25%, rgba(70, 69, 69, 0) 25%),
-            linear-gradient(45deg, rgba(75, 73, 73, 0) 75%, rgba(75, 73, 73, 0.12) 75%),
-            linear-gradient(-45deg, rgba(133, 131, 131, 0) 75%, rgba(133, 131, 131, 0.10) 75%);
-          background-size: 40px 40px;
-          background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
-          filter: blur(3px) saturate(0.95);
-          opacity: 0.95;
         }
 
         .content {
@@ -156,14 +146,8 @@ export default function Produtos() {
           gap: 2rem;
           justify-content: center;
           padding: 4rem 2rem;
-          background-color: #646464ff; /* mantido */
-          background-image:
-            linear-gradient(45deg, #7c7a7aff 25%, transparent 25%),
-            linear-gradient(-45deg, #464545ff 25%, transparent 25%),
-            linear-gradient(45deg, transparent 75%, #4b4949ff 75%),
-            linear-gradient(-45deg, transparent 75%, #858383ff 75%);
-          background-size: 40px 40px;
-          background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+          background-color: white;
+          position: relative;
           box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.04);
         }
 
@@ -186,6 +170,19 @@ export default function Produtos() {
           background-repeat: no-repeat;
           background-position: center;
         }
+
+        .cards-container::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          height: 140px; 
+          pointer-events: none;
+          background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+          z-index: 2;
+        }
+
 
         .card:hover {
           transform: translateY(-6px);

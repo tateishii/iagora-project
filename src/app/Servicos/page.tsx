@@ -240,13 +240,11 @@ export default function Servicos() {
           animation: borderColorShift 8s linear infinite, float 4s ease-in-out infinite;
           color: #fff;
 
-          /* Start hidden & shifted */
           opacity: 0;
           transform: translateX(0);
           transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
-        /* Animation directions */
         .balloon.from-left {
           transform: translateX(-50px);
         }

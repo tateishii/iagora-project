@@ -15,7 +15,7 @@ export default function Colaboradores() {
     { imgSrc: "/velpack.png", alt: "Velpack" },
   ];
 
-  const cardWidth = 270 + 30; 
+  const cardWidth = 270 + 30;
 
   useEffect(() => {
     if (isPaused) return;
@@ -51,7 +51,15 @@ export default function Colaboradores() {
             >
               {cards.map((card, idx) => (
                 <div key={idx} className="card">
-                  <img src={card.imgSrc} alt={card.alt} />
+                  <img
+                    src={card.imgSrc}
+                    alt={card.alt}
+                    className={
+                      card.imgSrc === "/ste.png" || card.imgSrc === "/velpack.png"
+                        ? "img-ajustada"
+                        : ""
+                    }
+                  />
                 </div>
               ))}
             </div>
@@ -100,7 +108,7 @@ export default function Colaboradores() {
         }
 
         .top-section {
-          background-color: #aaa9b0;
+          background-color: #f8f8f8;
           padding: 80px 60px;
           text-align: center;
         }
@@ -126,7 +134,7 @@ export default function Colaboradores() {
         }
 
         .card {
-          background-color: white;
+          background-color: #efebebff;
           width: 270px;
           height: 270px;
           border-radius: 12px;
@@ -146,9 +154,18 @@ export default function Colaboradores() {
           border-radius: 12px;
         }
 
+        /* Ajuste para ste.png e velpack.png */
+        .card img.img-ajustada {
+          width: auto;
+          max-width: 80%;
+          height: auto;
+          max-height: 80%;
+          object-fit: contain;
+        }
+
         .bottom-section {
           background-color: #292c31;
-          height: 400px;
+          height: 340px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -179,14 +196,14 @@ export default function Colaboradores() {
         }
 
         .side-title {
-          font-size: 36px;
+          font-size: 30px;
           font-weight: bold;
           margin-bottom: 10px;
           color: #0074bb;
         }
 
         .side-text {
-          font-size: 22px;
+          font-size: 18px;
           line-height: 1.5;
           color: #ffffff;
           justify-content: left;

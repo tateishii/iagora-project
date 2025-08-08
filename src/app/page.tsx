@@ -39,7 +39,7 @@ export default function LandingPage() {
       <section id="topo" className="hero">
         <div className="hero-content">
           <h1>
-            Agora Sua Parceira em Soluções{" "}
+            IAgora Sua Parceira em Soluções{" "}
             <span className="destaque">Tecnológicas</span> Inovadoras.
           </h1>
           <p>
@@ -173,7 +173,7 @@ export default function LandingPage() {
         .cards-container {
           display: flex;
           gap: 20px;
-          transition: transform 0.6s ease-in-out;
+          transition: transform 0.5s ease-in-out;
         }
 
 
