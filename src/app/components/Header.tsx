@@ -23,10 +23,10 @@ export default function Header() {
             <img src="/logo.png" className="logo" alt="Logo da empresa" style={{ cursor: "pointer", display: "block" }} />
           </Link>
           <nav>
-            <Link href="/" scroll={true} className="link">Home</Link>
-            <Link href="/Sobre" className="link">Sobre</Link>
-            <Link href="/Produtos" className="link">Produtos</Link>
-            <Link href="/Servicos" className="link">Serviços</Link>
+            <Link href="/" scroll={true} style={{ color: "white", textDecoration: "none", fontWeight: "600" }}>Home</Link>
+            <Link href="/Sobre" style={{ color: "white", textDecoration: "none", fontWeight: "600" }}>Sobre</Link>
+            <Link href="/Produtos" style={{ color: "white", textDecoration: "none", fontWeight: "600" }}>Produtos</Link>
+            <Link href="/Servicos" style={{ color: "white", textDecoration: "none", fontWeight: "600" }}>Serviços</Link>
             {/* <Link href="/contato" className="link">Contato</Link> */}
           </nav>
         </div>
@@ -77,6 +77,19 @@ export default function Header() {
             display: flex;
             gap: 2rem;
           }
+
+          .link {
+            color: black;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: color 0.3s ease;
+          }
+
+          .link:hover {
+            color: #0074bb;
+          }
+
 
         `}</style>
       </header>

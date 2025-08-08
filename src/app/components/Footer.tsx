@@ -37,21 +37,23 @@ export default function Footer() {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          padding: 1rem 3rem;
+          padding: 0.7rem 1rem;
           font-family: 'Arial', sans-serif;
           flex-wrap: wrap;
           gap: 1rem;
+
+
         }
 
         .footer-left h3 {
           margin: 0 0 0.3rem 0;
           font-weight: bold;
-          font-size: 20px;
+          font-size: 18px;
         }
 
         .footer-left p {
           margin: 0;
-          font-size: 14px;
+          font-size: 12px;
           opacity: 0.7;
         }
 
@@ -66,8 +68,8 @@ export default function Footer() {
         }
 
         .footer-right img {
-          width: 45px;
-          height: 45px;
+          width: 30px;
+          height: 30px;
           object-fit: contain;
           cursor: pointer;
         }
@@ -78,6 +80,7 @@ export default function Footer() {
           object-fit: contain;
           margin-top: 4px;
         }
+
       `}</style>
     </>
   );

@@ -17,22 +17,21 @@ export default function LandingPage() {
     { id: 4, href: "/Produtos", imgSrc: "/sla.png" },
   ];
 
-  const cardWidth = 320; 
+  const cardWidth = 320;
 
   useEffect(() => {
-  if (isPaused) return;
+    if (isPaused) return;
 
-  const interval = setInterval(() => {
-    setCurrentIndex((prev) => {
-      const visibleCount = 2;
-      const maxIndex = cards.length - visibleCount;
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => {
+        const visibleCount = 2;
+        const maxIndex = cards.length - visibleCount;
+        return prev >= maxIndex ? 0 : prev + 1;
+      });
+    }, 2000);
 
-      return prev >= maxIndex ? 0 : prev + 1;
-    });
-  }, 2000);
-
-  return () => clearInterval(interval);
-}, [cards.length, isPaused]);
+    return () => clearInterval(interval);
+  }, [cards.length, isPaused]);
 
   return (
     <>
@@ -43,7 +42,9 @@ export default function LandingPage() {
             <span className="destaque">Tecnológicas</span> Inovadoras.
           </h1>
           <p>
-            Criamos sistemas sob medida, e-commerces personalizados e integrações inteligentes com ERP. Acelere o crescimento do seu negócio com soluções tecnológicas eficientes, seguras e escaláveis. 🚀
+            Criamos sistemas sob medida, e-commerces personalizados e integrações
+            inteligentes com ERP. Acelere o crescimento do seu negócio com soluções
+            tecnológicas eficientes, seguras e escaláveis. 🚀
           </p>
         </div>
       </section>
@@ -68,18 +69,22 @@ export default function LandingPage() {
                 />
               ))}
             </div>
-
           </div>
 
+          {/* Mantemos a div texto-direita fixa e animamos somente o conteúdo interno */}
           <div className="texto-direita">
-            <h2>Por que nós?</h2>
-            <p>
-              Tecnologia sob medida. inovação real, parceria confiável.
-              Transformamos desafios em soluções com sistemas Web inteligentes,
-              automação RPA e plataformas CRM/ERP personalizadas. Você sonha, a
-              gente desenvolve com transparência e uma equipe pronta para
-              acelerar o seu crescimento.
-            </p>
+            <AnimatedSection delay={0.2}>
+              <>
+                <h2>Por que nós?</h2>
+                <p>
+                  Tecnologia sob medida. inovação real, parceria confiável.
+                  Transformamos desafios em soluções com sistemas Web inteligentes,
+                  automação RPA e plataformas CRM/ERP personalizadas. Você sonha, a
+                  gente desenvolve com transparência e uma equipe pronta para
+                  acelerar o seu crescimento.
+                </p>
+              </>
+            </AnimatedSection>
           </div>
         </div>
 
@@ -103,8 +108,17 @@ export default function LandingPage() {
 
             <div className="texto-roxo">
               <AnimatedSection delay={0.4}>
-                <p style={{ marginTop: "-10px", position: "relative", left: "20px" }}>
-                  Somos especialistas em moldar seu futuro digital, desenvolvendo soluções ágeis, otimizando suas operações e elevando sua gestão com o poder da nuvem e da inteligência artificial. Seu crescimento, nossa tecnologia.
+                <p
+                  style={{
+                    marginTop: "-10px",
+                    position: "relative",
+                    left: "20px",
+                  }}
+                >
+                  Somos especialistas em moldar seu futuro digital, desenvolvendo
+                  soluções ágeis, otimizando suas operações e elevando sua gestão com
+                  o poder da nuvem e da inteligência artificial. Seu crescimento,
+                  nossa tecnologia.
                 </p>
               </AnimatedSection>
             </div>
@@ -175,7 +189,6 @@ export default function LandingPage() {
           gap: 20px;
           transition: transform 0.5s ease-in-out;
         }
-
 
         .texto-direita {
           max-width: 35%;

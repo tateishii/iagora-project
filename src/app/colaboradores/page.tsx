@@ -164,7 +164,7 @@ export default function Colaboradores() {
         }
 
         .bottom-section {
-          background-color: #292c31;
+          background-color: #f7f7f7ff;
           height: 340px;
           display: flex;
           align-items: center;
@@ -196,23 +196,23 @@ export default function Colaboradores() {
         }
 
         .side-title {
-          font-size: 30px;
+          font-size: 25px;
           font-weight: bold;
           margin-bottom: 10px;
           color: #0074bb;
         }
 
         .side-text {
-          font-size: 18px;
+          font-size: 16px;
           line-height: 1.5;
-          color: #ffffff;
+          color: #000000ff;
           justify-content: left;
           text-align: left;
         }
 
         .vertical-line {
           width: 2px;
-          background-color: white;
+          background-color: #000000;
           height: 90%;
           margin: 0 40px;
           align-self: center;

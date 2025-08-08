@@ -111,7 +111,7 @@ export default function Sobre() {
     font-size: 28px;
     font-weight: bold;
     margin-bottom: 16px;
-    color: #0074bb;
+    color: #ffffffff;
   }
 
   .bottom-text {

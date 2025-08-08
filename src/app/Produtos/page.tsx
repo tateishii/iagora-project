@@ -95,7 +95,7 @@ export default function Produtos() {
           background-position: center;
           width: 100%;
           height: 100%;
-          padding-top: 255px;
+          padding-top: 305px;
           padding-left: 80px;
           display: flex;
           align-items: flex-start;
