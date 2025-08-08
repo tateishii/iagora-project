@@ -29,7 +29,7 @@ export default function LandingPage() {
 
       return prev >= maxIndex ? 0 : prev + 1;
     });
-  }, 3000);
+  }, 2000);
 
   return () => clearInterval(interval);
 }, [cards.length, isPaused]);

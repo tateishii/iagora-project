@@ -5,19 +5,31 @@ import Footer from "../components/Footer";
 
 export default function Colaboradores() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
-  const cards = ["Card 1", "Card 2", "Card 3", "Card 4", "Card 5"];
+  const cards = [
+    { imgSrc: "/dsafari.png", alt: "Distribuidora Safari" },
+    { imgSrc: "/gr5.png", alt: "GR5 Logística" },
+    { imgSrc: "/negreira.png", alt: "Negreira" },
+    { imgSrc: "/ste.png", alt: "STE Fios" },
+    { imgSrc: "/velpack.png", alt: "Velpack" },
+  ];
+
+  const cardWidth = 270 + 30; 
 
   useEffect(() => {
+    if (isPaused) return;
+
     const interval = setInterval(() => {
       setCurrentIndex((prev) => {
-        const maxIndex = cards.length - 4;
-        if (prev >= maxIndex) return 0;
-        return prev + 1;
+        const visibleCount = 4;
+        const maxIndex = cards.length - visibleCount;
+        return prev >= maxIndex ? 0 : prev + 1;
       });
-    }, 3000);
+    }, 2000);
+
     return () => clearInterval(interval);
-  }, [cards.length]);
+  }, [cards.length, isPaused]);
 
   return (
     <>
@@ -31,13 +43,15 @@ export default function Colaboradores() {
           <div className="cards-container-wrapper">
             <div
               className="cards-container"
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
               style={{
-                transform: `translateX(-${currentIndex * (270 + 30)}px)`,
+                transform: `translateX(-${currentIndex * cardWidth}px)`,
               }}
             >
               {cards.map((card, idx) => (
                 <div key={idx} className="card">
-                  {card}
+                  <img src={card.imgSrc} alt={card.alt} />
                 </div>
               ))}
             </div>
@@ -76,7 +90,6 @@ export default function Colaboradores() {
             <img src="/logo.png" alt="Logo da empresa" />
           </div>
         </section>
-
       </main>
       <Footer />
 
@@ -101,7 +114,7 @@ export default function Colaboradores() {
 
         .cards-container-wrapper {
           overflow: hidden;
-          width: calc(270px * 4 + 30px * 3); /* largura dos 4 cards visíveis + gaps */
+          width: calc(270px * 4 + 30px * 3);
           margin: 0 auto;
         }
 
@@ -124,6 +137,13 @@ export default function Colaboradores() {
           font-weight: 600;
           font-size: 18px;
           flex-shrink: 0;
+        }
+
+        .card img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 12px;
         }
 
         .bottom-section {
