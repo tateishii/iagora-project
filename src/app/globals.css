@@ -28,4 +28,10 @@ a:focus {
   box-shadow: none;
 }
 
+/* .overlay,
+.overlay * {
+  color: inherit !important;
+} */
+
+
 

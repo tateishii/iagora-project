@@ -27,7 +27,7 @@ export default function Header() {
             <Link href="/Sobre" className="link">Sobre</Link>
             <Link href="/Produtos" className="link">Produtos</Link>
             <Link href="/Servicos" className="link">Serviços</Link>
-            <Link href="/contato" className="link">Contato</Link>
+            {/* <Link href="/contato" className="link">Contato</Link> */}
           </nav>
         </div>
 

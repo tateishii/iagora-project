@@ -2,7 +2,7 @@
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { desc } from "framer-motion/client";
+import { motion } from "framer-motion";
 
 export default function Produtos() {
 
@@ -19,7 +19,7 @@ export default function Produtos() {
     },
     {
       imgSrc: "/pcp.png",
-      title: "Soluções PCP",
+      title: "Soluções",
       description: "Criamos sistemas de Planejamento e Controle da Produção (PCP) sob medida, ideais para empresas que precisam otimizar a gestão da produção e alcançar maior eficiência operacional. Nossas soluções incluem módulos de BI com dashboards interativos, relatórios detalhados, gráficos e acompanhamento em tempo real dos principais indicadores (KPIs). Tudo isso para apoiar uma tomada de decisão rápida e baseada em dados concretos."
     }
   ];
@@ -31,12 +31,25 @@ export default function Produtos() {
       <section className="top-section">
         <div className="overlay">
           <div className="content">
-            <h1 className="title">Conheça Nossos Produtos</h1>
-            <p className="description">
+            <motion.h1
+              style={{ color: "#0074bb", fontSize: 32, fontWeight: "bold", marginBottom: 20 }}
+              initial={{ x: "-100vw", opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ type: "spring", stiffness: 50, delay: 0.3 }}
+            >
+              Conheça Nossos Produtos
+            </motion.h1>
+            <motion.p
+              style={{ color: "#fff", fontSize: 24 }}
+              initial={{ x: "100vw", opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ type: "spring", stiffness: 50, delay: 0.6 }}
+            >
               Imagine ter em suas mãos ferramentas que não apenas otimizam, mas
               catalisam o crescimento, que não só respondem às demandas, mas
               antecipam o sucesso.
-            </p>
+            </motion.p>
+
           </div>
         </div>
       </section>
@@ -82,12 +95,13 @@ export default function Produtos() {
           background-position: center;
           width: 100%;
           height: 100%;
-          padding: 0 80px;
+          padding-top: 290px;
+          padding-left: 80px;
           display: flex;
-          align-items: center;
+          align-items: flex-start;
           justify-content: flex-start;
           position: relative;
-          overflow: visible; 
+          overflow: visible;
         }
 
         .overlay::before {
@@ -125,16 +139,16 @@ export default function Produtos() {
           max-width: 700px;
         }
 
-        .title {
-          font-size: 32px;
-          font-weight: bold;
-          color: #0074bb;
-          margin-bottom: 20px;
+        .top-section .content .title {
+          font-size: 32px !important;
+          font-weight: bold !important;
+          color: #0074bb !important;
+          margin-bottom: 20px !important;
         }
 
-        .description {
-          font-size: 24px;
-          color: #ffffff;
+        .top-section .content .description {
+          font-size: 24px !important;
+          color: #ffffff !important;
         }
 
         .cards-container {
@@ -190,7 +204,7 @@ export default function Produtos() {
         .card-title {
           font-size: 20px;
           font-weight: bold;
-          color: #0074bb;
+          color: #f3f3f3ff;
           transition: opacity 0.3s ease;
         }
 

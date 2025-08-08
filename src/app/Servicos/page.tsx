@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Boxes } from "../components/ui/Boxes";
 import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 export default function Servicos() {
   const balloons = [
@@ -70,10 +71,23 @@ export default function Servicos() {
       <section className="top-section">
         <div className="overlay">
           <div className="content">
-            <h1 className="title">Desenvolvimento Web</h1>
-            <p className="description">
-              Construímos soluções digitais sob medida que conectam ideias e geram resultados. Da estratégia à execução, nosso time desenvolve interfaces modernas, eficientes e funcionais para sua presença online.
-            </p>
+            <motion.h1
+              style={{ color: "#0074bb", fontSize: 32, fontWeight: "bold", marginBottom: 20 }}
+              initial={{ x: "-100vw", opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ type: "spring", stiffness: 50, delay: 0.3 }}
+            >
+              Conheça Nossos Serviços
+            </motion.h1>
+            <motion.p
+              style={{ color: "#fff", fontSize: 24 }}
+              initial={{ x: "100vw", opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ type: "spring", stiffness: 50, delay: 0.6 }}
+            >
+              	Sua visão se torna realidade com nossas soluções digitais personalizadas. Sites, apps e sistemas que geram resultados, com a inteligência e o suporte que seu negócio merece.
+            </motion.p>
+
           </div>
         </div>
       </section>
