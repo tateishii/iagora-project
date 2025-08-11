@@ -1,0 +1,211 @@
+.main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, Geneva, Tahoma, sans-serif;
+    color: #171717;
+}
+
+.hero {
+    background: linear-gradient(90deg, #372f53cc, #0074bbcc), url('/erp-hero-bg.png');
+    background-size:  cover;
+    background-position: center;
+    padding: 5rem 2rem;
+    border-radius: 16px;
+    color: white;
+    text-align: left;
+    margin-top: 6rem;
+}
+
+.heroContent {
+    max-width: 600px;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.highlight {
+    background: linear-gradient(270deg, #00c2ff, #0074bb, #00c2ff);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 6s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-top: 1rem;
+}
+
+.presentation {
+    margin-top: 5rem;
+}
+
+.sectionTitle {
+    font-size: 2rem;
+    color: #0074bb;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.presentationContent {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.erpLogo {
+    position: absolute;
+    top: 40px;
+    left: 420px;
+    width: 300px;
+}
+/* 
+.images img {
+    max-width: 300px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    margin-bottom: 1rem;
+    transition: transform 0.3 ease;
+}
+
+.images img:hover {
+    transform: scale(1.05);
+} */
+
+.presentationText {
+    max-width: 500px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #3b3b3b;
+    text-align: justify;
+}
+
+.features {
+    margin-top: 5rem;
+    background-color: #f0f6fb;
+    padding: 3rem 2rem;
+    border-radius: 16px;
+}
+
+.featuresList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.featuresList li {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: #171717;
+}
+
+.featuresList li strong {
+    color: #0074bb;
+}
+
+.testimonial {
+    margin-top: 5rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    font-style: italic;
+    color: #555555;
+    text-align: center;
+    padding: 2rem;
+    border-left: 4px solid #0074bb;
+    background-color: #f7f9fc;
+    border-radius: 8px;
+}
+
+.testimonial cite  {
+    display: block;
+    margin-top: 1rem;
+    font-weight: 600;
+    color: #0074bb;
+}
+
+.cta {
+    margin-top: 6rem;
+    text-align: center;
+}
+
+.cta h2 {
+    font-size: 2rem;
+    color: #372f53;
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+.ctaButton {
+    background-color: #0074bb;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.ctaButton:hover {
+    background-color: #005a8c;
+}
+
+@media (max-width: 900px) {
+    .presentationContent {
+        flex-direction: column;
+    }
+
+    .presentationText {
+        max-width: 100%;
+    }
+
+    .hero {
+        padding: 3rem 1rem;
+    }
+
+    .title {
+        font-size: 2.25rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+    }
+
+    .cta h2 {
+        font-size: 1.5rem;
+    }
+}

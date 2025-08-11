@@ -19,7 +19,7 @@ export default function Footer() {
             <img src="/instagram-icon.svg" alt="Instagram" />
           </a>
           <a
-            href="https://wa.me/11956538444"
+            href="https://wa.me/5511956538444"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="WhatsApp"
@@ -31,29 +31,27 @@ export default function Footer() {
 
       <style jsx>{`
         .footer-final {
-          background: rgba(17, 7, 17, 0.9);
+          background: rgba(0, 0, 0, 0.9);
           backdrop-filter: blur(4px);
           color: white;
           display: flex;
           justify-content: space-between;
           align-items: center;
-          padding: 0.7rem 1rem;
+          padding: 0.3rem 0.9rem;
           font-family: 'Arial', sans-serif;
           flex-wrap: wrap;
           gap: 1rem;
-
-
         }
 
         .footer-left h3 {
           margin: 0 0 0.3rem 0;
           font-weight: bold;
-          font-size: 18px;
+          font-size: 15px;
         }
 
         .footer-left p {
           margin: 0;
-          font-size: 12px;
+          font-size: 11px;
           opacity: 0.7;
         }
 
@@ -68,8 +66,8 @@ export default function Footer() {
         }
 
         .footer-right img {
-          width: 30px;
-          height: 30px;
+          width: 27px;
+          height: 28px;
           object-fit: contain;
           cursor: pointer;
         }

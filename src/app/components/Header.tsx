@@ -33,7 +33,7 @@ export default function Header() {
 
         <style jsx>{`
           .header {
-            background: rgba(17, 7, 17, 0.9);
+            background: rgba(0, 0, 0, 0.9);
             backdrop-filter: blur(4px);
             position: fixed;
             top: 0;
