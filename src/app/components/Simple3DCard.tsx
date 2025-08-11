@@ -6,6 +6,7 @@ interface Simple3DCardProps {
   imageSrc: string;
   alt?: string;
   href: string;
+  className?: string;
 }
 
 const Simple3DCard: React.FC<Simple3DCardProps> = ({ imageSrc, alt, href }) => {

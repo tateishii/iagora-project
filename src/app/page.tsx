@@ -37,11 +37,11 @@ export default function LandingPage() {
     <>
       <section id="topo" className="hero">
         <div className="hero-content">
-          <h1>
+          <h1 className="hero-title">
             IAgora Sua Parceira em Soluções{" "}
             <span className="destaque">Tecnológicas</span> Inovadoras.
           </h1>
-          <p>
+          <p className="hero-subtitle">
             Criamos sistemas sob medida, e-commerces personalizados e integrações
             inteligentes com ERP. Acelere o crescimento do seu negócio com soluções
             tecnológicas eficientes, seguras e escaláveis. 🚀
@@ -60,18 +60,18 @@ export default function LandingPage() {
                 transform: `translateX(-${currentIndex * cardWidth}px)`,
               }}
             >
-              {cards.map(({ id, href, imgSrc }) => (
+              {cards.map(({ id, href, imgSrc }, index) => (
                 <Simple3DCard
                   key={id}
                   imageSrc={imgSrc}
                   alt={`Imagem ${id}`}
                   href={href}
+                  className={index === currentIndex ? "active-card" : ""}
                 />
               ))}
             </div>
           </div>
 
-          {/* Mantemos a div texto-direita fixa e animamos somente o conteúdo interno */}
           <div className="texto-direita">
             <AnimatedSection delay={0.2}>
               <>
@@ -89,6 +89,7 @@ export default function LandingPage() {
         </div>
 
         <div className="parte-roxa">
+          <div className="bg-parallax"></div>
           <div className="conteudo-roxo">
             <div className="titulo-roxo">
               <AnimatedSection delay={0.2}>
@@ -146,6 +147,27 @@ export default function LandingPage() {
           text-align: left;
         }
 
+        .hero-title {
+          opacity: 0;
+          transform: translateY(30px);
+          animation: fadeUp 1s ease forwards;
+          animation-delay: 0.3s;
+        }
+
+        .hero-subtitle {
+          opacity: 0;
+          transform: translateY(20px);
+          animation: fadeUp 1s ease forwards;
+          animation-delay: 0.6s;
+        }
+
+        @keyframes fadeUp {
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
         h1 {
           font-size: 36px;
           font-weight: bold;
@@ -158,7 +180,23 @@ export default function LandingPage() {
         }
 
         .destaque {
-          color: #00c2ff;
+          background: linear-gradient(270deg, #00c2ff, #0074bb, #00c2ff);
+          background-size: 300% 300%;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: gradientShift 6s ease infinite;
+        }
+
+        @keyframes gradientShift {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
         }
 
         .bloco-colorido {
@@ -216,6 +254,30 @@ export default function LandingPage() {
           justify-content: center;
           padding: 3rem 5rem;
           position: relative;
+          overflow: hidden;
+        }
+
+        .bg-parallax {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 120%;
+          height: 120%;
+          background: radial-gradient(circle at center, rgba(255,255,255,0.05), transparent 70%),
+                      linear-gradient(120deg, rgba(255,0,255,0.1), rgba(0,200,255,0.1));
+          background-size: cover;
+          transform: translateY(0px);
+          animation: moveBackground 20s ease-in-out infinite alternate;
+          z-index: 0;
+        }
+
+        @keyframes moveBaackground {
+          from {
+            transform: translateY(-10px) translateX(-10px);
+          }
+          to {
+            transform: translateY(10px) translateX(10px);
+          }
         }
 
         .conteudo-roxo {
@@ -223,6 +285,7 @@ export default function LandingPage() {
           display: flex;
           justify-content: space-between;
           align-items: flex-start;
+          .position: relative;
         }
 
         .titulo-roxo h2 {
@@ -239,7 +302,7 @@ export default function LandingPage() {
           color: #ffffff;
           line-height: 1.6;
           text-align: left;
-          padding-top: 6rem;
+          padding-top: 4rem;
           margin-left: auto;
         }
 
@@ -270,6 +333,23 @@ export default function LandingPage() {
 
         .colaboradores-inline button:hover {
           background-color: #cc00cc;
+        }
+
+        .cards-container :global(.active-card) {
+          transform: scale(1.05);
+          transition: transform 0.4s ease;
+        }
+
+        .cards-container :global(.active-card:hover) {
+          transform: scale(1.05) rotateY(3deg);
+        }
+
+        .cards-container :global(a) {
+          transition: transform 0.4s ease;
+        }
+
+        .cards-container :global(a:hover) {
+          transform: rotateY(3deg) scale(1.02);
         }
       `}</style>
     </>
