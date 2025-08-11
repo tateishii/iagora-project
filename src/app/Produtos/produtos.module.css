@@ -1,0 +1,174 @@
+.main {
+  scroll-behavior: smooth;
+}
+
+.topSection {
+  position: relative;
+  height: 100vh;
+  background: none;
+}
+
+.overlay {
+  background-image:
+    linear-gradient(to bottom, rgba(26, 26, 26, 0) 65%, #646464ff 100%),
+    url("/fundo2.png");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  padding-top: 305px;
+  padding-left: 80px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+  overflow: visible;
+}
+
+.overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(14, 14, 14, 0.6);
+  z-index: 0;
+}
+
+.overlay::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 140px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+}
+
+.cardsContainer {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  padding: 4rem 2rem;
+  background-color: white;
+  position: relative;
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.04);
+}
+
+.card {
+  position: relative;
+  width: 300px;
+  height: 360px;
+  background: linear-gradient(to bottom, #f0f0f0, #ffffff);
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.cardsContainer::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 140px;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+  z-index: 2;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.cardContent {
+  z-index: 1;
+}
+
+.cardTitle {
+  font-size: 20px;
+  font-weight: bold;
+  color: #f3f3f3ff;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover .cardTitle {
+  opacity: 0;
+}
+
+.cardOverlay {
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(55, 47, 83, 0.95);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: bottom 0.4s ease-in-out;
+  padding: 1rem;
+}
+
+.card:hover .cardOverlay {
+  bottom: 0;
+}
+
+.overlayContent {
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: left;
+}
+
+/* Responsividade */
+
+@media (max-width: 900px) {
+  .overlay {
+    padding-left: 30px;
+    padding-top: 200px;
+  }
+
+  .cardsContainer {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 24px !important;
+  }
+
+  .content p {
+    font-size: 18px !important;
+  }
+
+  .cardTitle {
+    font-size: 18px;
+  }
+
+  .overlayContent {
+    font-size: 14px;
+  }
+}

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Footer from "./components/Footer";
 import AnimatedSection from "./components/AnimatedSection";
 import Simple3DCard from "./components/Simple3DCard";
+import styles from "./landingpage.module.css";
 
 export default function LandingPage() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -35,13 +36,13 @@ export default function LandingPage() {
 
   return (
     <>
-      <section id="topo" className="hero">
-        <div className="hero-content">
-          <h1 className="hero-title">
+      <section id="topo" className={styles.hero}>
+        <div className={styles.heroContent}>
+          <h1 className={styles.heroTitle}>
             IAgora Sua Parceira em Soluções{" "}
-            <span className="destaque">Tecnológicas</span> Inovadoras.
+            <span className={styles.destaque}>Tecnológicas</span> Inovadoras.
           </h1>
-          <p className="hero-subtitle">
+          <p className={styles.heroSubtitle}>
             Criamos sistemas sob medida, e-commerces personalizados e integrações
             inteligentes com ERP. Acelere o crescimento do seu negócio com soluções
             tecnológicas eficientes, seguras e escaláveis. 🚀
@@ -49,11 +50,11 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="bloco-colorido">
-        <div className="parte-branca">
-          <div className="carousel-wrapper">
+      <section className={styles.blocoColorido}>
+        <div className={styles.parteBranca}>
+          <div className={styles.carouselWrapper}>
             <div
-              className="cards-container"
+              className={styles.cardsContainer}
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
               style={{
@@ -66,13 +67,13 @@ export default function LandingPage() {
                   imageSrc={imgSrc}
                   alt={`Imagem ${id}`}
                   href={href}
-                  className={index === currentIndex ? "active-card" : ""}
+                  className={index === currentIndex ? styles.activeCard : ""}
                 />
               ))}
             </div>
           </div>
 
-          <div className="texto-direita">
+          <div className={styles.textoDireita}>
             <AnimatedSection delay={0.2}>
               <>
                 <h2>Por que nós?</h2>
@@ -88,10 +89,10 @@ export default function LandingPage() {
           </div>
         </div>
 
-        <div className="parte-roxa">
-          <div className="bg-parallax"></div>
-          <div className="conteudo-roxo">
-            <div className="titulo-roxo">
+        <div className={styles.parteRoxa}>
+          <div className={styles.bgParallax}></div>
+          <div className={styles.conteudoRoxo}>
+            <div className={styles.tituloRoxo}>
               <AnimatedSection delay={0.2}>
                 <h2>
                   Transformamos seu negócio
@@ -99,7 +100,7 @@ export default function LandingPage() {
                   com inovação
                 </h2>
               </AnimatedSection>
-              <div className="colaboradores-inline">
+              <div className={styles.colaboradoresInline}>
                 <span>Descubra quem está por trás do sucesso</span>
                 <Link href="/colaboradores">
                   <button>Colaboradores</button>
@@ -107,7 +108,7 @@ export default function LandingPage() {
               </div>
             </div>
 
-            <div className="texto-roxo">
+            <div className={styles.textoRoxo}>
               <AnimatedSection delay={0.4}>
                 <p
                   style={{
@@ -128,230 +129,6 @@ export default function LandingPage() {
       </section>
 
       <Footer />
-
-      <style jsx>{`
-        .hero {
-          background-image: url("/fundo.png");
-          background-size: cover;
-          background-position: center;
-          justify-content: flex-end;
-          padding-right: 5rem;
-          color: white;
-          height: 100vh;
-          display: flex;
-          align-items: center;
-        }
-
-        .hero-content {
-          max-width: 700px;
-          text-align: left;
-        }
-
-        .hero-title {
-          opacity: 0;
-          transform: translateY(30px);
-          animation: fadeUp 1s ease forwards;
-          animation-delay: 0.3s;
-        }
-
-        .hero-subtitle {
-          opacity: 0;
-          transform: translateY(20px);
-          animation: fadeUp 1s ease forwards;
-          animation-delay: 0.6s;
-        }
-
-        @keyframes fadeUp {
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        h1 {
-          font-size: 36px;
-          font-weight: bold;
-          margin-bottom: 1rem;
-        }
-
-        p {
-          font-size: 22px;
-          line-height: 1.4;
-        }
-
-        .destaque {
-          background: linear-gradient(270deg, #00c2ff, #0074bb, #00c2ff);
-          background-size: 300% 300%;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          animation: gradientShift 6s ease infinite;
-        }
-
-        @keyframes gradientShift {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-
-        .bloco-colorido {
-          height: 100vh;
-          display: flex;
-          flex-direction: column;
-        }
-
-        .parte-branca {
-          flex: 6;
-          background-color: #ffffff;
-          display: flex;
-          justify-content: flex-start;
-          align-items: center;
-          padding-left: 5rem;
-          padding-right: 5rem;
-          gap: 4rem;
-        }
-
-        .carousel-wrapper {
-          overflow: hidden;
-          width: 100%;
-          position: relative;
-        }
-
-        .cards-container {
-          display: flex;
-          gap: 20px;
-          transition: transform 0.5s ease-in-out;
-        }
-
-        .texto-direita {
-          max-width: 35%;
-        }
-
-        .texto-direita h2 {
-          color: #0074bb;
-          font-size: 36px;
-          font-weight: bold;
-          margin-bottom: 1rem;
-        }
-
-        .texto-direita p {
-          font-size: 21px;
-          font-weight: bold;
-          line-height: 1.6rem;
-          color: #171717;
-        }
-
-        .parte-roxa {
-          flex: 4;
-          background-color: #372f53;
-          display: flex;
-          align-items: flex-start;
-          justify-content: center;
-          padding: 3rem 5rem;
-          position: relative;
-          overflow: hidden;
-        }
-
-        .bg-parallax {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 120%;
-          height: 120%;
-          background: radial-gradient(circle at center, rgba(255,255,255,0.05), transparent 70%),
-                      linear-gradient(120deg, rgba(255,0,255,0.1), rgba(0,200,255,0.1));
-          background-size: cover;
-          transform: translateY(0px);
-          animation: moveBackground 20s ease-in-out infinite alternate;
-          z-index: 0;
-        }
-
-        @keyframes moveBaackground {
-          from {
-            transform: translateY(-10px) translateX(-10px);
-          }
-          to {
-            transform: translateY(10px) translateX(10px);
-          }
-        }
-
-        .conteudo-roxo {
-          width: 100%;
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
-          .position: relative;
-        }
-
-        .titulo-roxo h2 {
-          color: #0074bb;
-          font-size: 36px;
-          font-weight: bold;
-          margin: 1rem 0 0 0;
-          padding-right: 2rem;
-        }
-
-        .texto-roxo {
-          max-width: 600px;
-          font-size: 24px;
-          color: #ffffff;
-          line-height: 1.6;
-          text-align: left;
-          padding-top: 4rem;
-          margin-left: auto;
-        }
-
-        .colaboradores-inline {
-          margin-top: 5rem;
-          display: flex;
-          align-items: center;
-          gap: 1rem;
-        }
-
-        .colaboradores-inline span {
-          font-size: 22px;
-          color: white;
-          font-weight: bold;
-        }
-
-        .colaboradores-inline button {
-          background-color: #ff00ff;
-          color: white;
-          font-size: 18px;
-          font-weight: bold;
-          padding: 0.5rem 1.2rem;
-          border: none;
-          border-radius: 10px;
-          cursor: pointer;
-          transition: background 0.3s ease;
-        }
-
-        .colaboradores-inline button:hover {
-          background-color: #cc00cc;
-        }
-
-        .cards-container :global(.active-card) {
-          transform: scale(1.05);
-          transition: transform 0.4s ease;
-        }
-
-        .cards-container :global(.active-card:hover) {
-          transform: scale(1.05) rotateY(3deg);
-        }
-
-        .cards-container :global(a) {
-          transition: transform 0.4s ease;
-        }
-
-        .cards-container :global(a:hover) {
-          transform: rotateY(3deg) scale(1.02);
-        }
-      `}</style>
     </>
   );
 }

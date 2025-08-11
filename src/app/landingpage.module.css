@@ -1,0 +1,219 @@
+.hero {
+  background-image: url("/fundo.png");
+  background-size: cover;
+  background-position: center;
+  justify-content: flex-end;
+  padding-right: 5rem;
+  color: white;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.heroContent {
+  max-width: 700px;
+  text-align: left;
+}
+
+.heroTitle {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 0.3s;
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.heroSubtitle {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease forwards;
+  animation-delay: 0.6s;
+  font-size: 22px;
+  line-height: 1.4;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.destaque {
+  background: linear-gradient(270deg, #00c2ff, #0074bb, #00c2ff);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 6s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.blocoColorido {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.parteBranca {
+  flex: 6;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  gap: 4rem;
+}
+
+.carouselWrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.cardsContainer {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.5s ease-in-out;
+}
+
+.activeCard {
+  transform: scale(1.05);
+  transition: transform 0.4s ease;
+}
+
+.activeCard:hover {
+  transform: scale(1.05) rotateY(3deg);
+}
+
+.cardsContainer :global(a) {
+  transition: transform 0.4s ease;
+}
+
+.cardsContainer :global(a:hover) {
+  transform: rotateY(3deg) scale(1.02);
+}
+
+.textoDireita {
+  max-width: 35%;
+}
+
+.textoDireita h2 {
+  color: #0074bb;
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.textoDireita p {
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 1.6rem;
+  color: #171717;
+}
+
+.parteRoxa {
+  flex: 4;
+  background-color: #372f53;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 3rem 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.bgParallax {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(
+      circle at center,
+      rgba(255, 255, 255, 0.05),
+      transparent 70%
+    ),
+    linear-gradient(120deg, rgba(255, 0, 255, 0.1), rgba(0, 200, 255, 0.1));
+  background-size: cover;
+  transform: translateY(0px);
+  animation: moveBackground 20s ease-in-out infinite alternate;
+  z-index: 0;
+}
+
+@keyframes moveBackground {
+  from {
+    transform: translateY(-10px) translateX(-10px);
+  }
+  to {
+    transform: translateY(10px) translateX(10px);
+  }
+}
+
+.conteudoRoxo {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+}
+
+.tituloRoxo h2 {
+  color: #0074bb;
+  font-size: 36px;
+  font-weight: bold;
+  margin: 1rem 0 0 0;
+  padding-right: 2rem;
+}
+
+.colaboradoresInline {
+  margin-top: 5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.colaboradoresInline span {
+  font-size: 22px;
+  color: white;
+  font-weight: bold;
+}
+
+.colaboradoresInline button {
+  background-color: #ff00ff;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 0.5rem 1.2rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.colaboradoresInline button:hover {
+  background-color: #cc00cc;
+}
+
+.textoRoxo {
+  max-width: 600px;
+  font-size: 24px;
+  color: #ffffff;
+  line-height: 1.6;
+  text-align: left;
+  padding-top: 4rem;
+  margin-left: auto;
+}

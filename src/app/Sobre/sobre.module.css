@@ -1,0 +1,157 @@
+.main {
+  scroll-behavior: smooth;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.topSection {
+  position: relative;
+  min-height: 100vh;
+  background-image: url("/iagora.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  padding: 100px 80px 40px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: auto;
+}
+
+.content {
+  max-width: 700px;
+  margin-bottom: 40px;
+}
+
+.title {
+  font-size: 38px;
+  font-weight: bold;
+  color: #2eafff;
+  margin-bottom: 20px;
+}
+
+.description {
+  font-size: 22px;
+  color: #ffffff;
+}
+
+.divider {
+  width: 100%;
+  height: 4px;
+  background-color: #2eafff;
+  margin: 40px 0;
+}
+
+.cardsContainer {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  border-radius: 12px;
+  flex: 1;
+  min-width: 280px;
+}
+
+.bottomTitle {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: #ffffffff;
+}
+
+.bottomText {
+  font-size: 20px;
+  color: #ffffffff;
+}
+
+.topics {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.topics li {
+  font-size: 20px;
+  margin-bottom: 12px;
+  position: relative;
+  padding-left: 24px;
+  color: #ffffffff;
+}
+
+.topics li::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background-color: #ffffffff;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 9px;
+}
+
+.footer {
+  margin-top: auto;
+}
+
+/* Responsividade */
+
+@media (max-width: 900px) {
+  .overlay {
+    padding: 60px 30px 30px 30px;
+  }
+
+  .cardsContainer {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .card {
+    min-width: auto;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .bottomTitle {
+    font-size: 24px;
+  }
+
+  .description,
+  .bottomText,
+  .topics li {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .overlay {
+    padding: 40px 15px 20px 15px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .bottomTitle {
+    font-size: 20px;
+  }
+
+  .description,
+  .bottomText,
+  .topics li {
+    font-size: 16px;
+  }
+}

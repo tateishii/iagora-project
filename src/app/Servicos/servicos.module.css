@@ -1,0 +1,230 @@
+.main {
+  scroll-behavior: smooth;
+}
+
+.topSection {
+  position: relative;
+  height: 100vh;
+}
+
+.overlay {
+  background-image: url("/devweb.png");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 80px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  z-index: 1;
+}
+
+.overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(22, 26, 50, 0.6);
+  z-index: 0;
+}
+
+.overlay::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 250px;
+  background: linear-gradient(to bottom, rgba(22, 26, 50, 0) 0%, rgba(22, 26, 50, 0.3) 50%, rgba(0, 0, 0, 0.7) 80%, rgba(0, 0, 0, 1) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #0074bb;
+  margin-bottom: 20px;
+}
+
+.description {
+  font-size: 24px;
+  color: #fff;
+}
+
+.balloonsSection {
+  background: linear-gradient(135deg, #1a084dff, #8b7979);
+  position: relative;
+  overflow: hidden;
+  height: 700px;
+}
+
+.balloonsWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.boxesContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.balloonsContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+.balloon {
+  position: absolute;
+  width: 240px;
+  min-height: 160px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s;
+  animation: float 4s ease-in-out infinite;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  animation: borderColorShift 8s linear infinite, float 4s ease-in-out infinite;
+  color: #fff;
+
+  opacity: 0;
+  transform: translateX(0);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.from-left {
+  transform: translateX(-50px);
+}
+.from-right {
+  transform: translateX(50px);
+}
+
+.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.balloon:hover {
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+.balloonContent {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.balloonContent h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.balloonContent p {
+  font-size: 16px;
+  margin: 0;
+  color: #fff;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes borderColorShift {
+  0% {
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+  25% {
+    border-color: rgba(255, 100, 100, 0.5);
+  }
+  50% {
+    border-color: rgba(100, 255, 100, 0.5);
+  }
+  75% {
+    border-color: rgba(100, 100, 255, 0.5);
+  }
+  100% {
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* Responsividade */
+
+@media (max-width: 900px) {
+  .overlay {
+    padding: 0 30px;
+  }
+
+  .balloonsSection {
+    height: auto;
+    padding: 60px 0;
+  }
+
+  .balloon {
+    position: relative;
+    width: auto;
+    min-height: auto;
+    margin: 20px auto;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .balloonsContainer {
+    position: relative;
+    max-width: none;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 24px;
+  }
+
+  .description {
+    font-size: 18px;
+  }
+
+  .balloonContent h3 {
+    font-size: 18px;
+  }
+
+  .balloonContent p {
+    font-size: 14px;
+  }
+}

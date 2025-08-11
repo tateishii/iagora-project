@@ -9,14 +9,14 @@ interface Simple3DCardProps {
   className?: string;
 }
 
-const Simple3DCard: React.FC<Simple3DCardProps> = ({ imageSrc, alt, href }) => {
+const Simple3DCard: React.FC<Simple3DCardProps> = ({ imageSrc, alt, href, className }) => {
   const cardRef = useRef<HTMLDivElement>(null);
 
   const target = useRef({ rotateX: 0, rotateY: 0, scale: 1 });
   const current = useRef({ rotateX: 0, rotateY: 0, scale: 1 });
   const animationFrameId = useRef<number | null>(null);
 
-  const maxRotation = 15; // máximo grau de rotação
+  const maxRotation = 10; 
 
   const animate = () => {
     const card = cardRef.current;
@@ -26,12 +26,13 @@ const Simple3DCard: React.FC<Simple3DCardProps> = ({ imageSrc, alt, href }) => {
     current.current.rotateY += (target.current.rotateY - current.current.rotateY) * 0.1;
     current.current.scale += (target.current.scale - current.current.scale) * 0.1;
 
-    card.style.transform = `rotateX(${current.current.rotateX}deg) rotateY(${current.current.rotateY}deg) scale(${current.current.scale})`;
+    card.style.transform = `perspective(900px) rotateX(${current.current.rotateX}deg) rotateY(${current.current.rotateY}deg) scale(${current.current.scale})`;
+    card.style.transition = "box-shadow 0.3s ease";
 
     if (
       Math.abs(target.current.rotateX - current.current.rotateX) > 0.01 ||
       Math.abs(target.current.rotateY - current.current.rotateY) > 0.01 ||
-      Math.abs(target.current.scale - current.current.scale) > 0.01
+      Math.abs(target.current.scale - current.current.scale) > 0.001
     ) {
       animationFrameId.current = requestAnimationFrame(animate);
     } else {
@@ -45,15 +46,13 @@ const Simple3DCard: React.FC<Simple3DCardProps> = ({ imageSrc, alt, href }) => {
 
     const rect = card.getBoundingClientRect();
 
-    // Calcula posição relativa do mouse, centrando em 0
-    const x = (e.clientX - rect.left) / rect.width - 0.5; // -0.5 a +0.5
-    const y = (e.clientY - rect.top) / rect.height - 0.5; // -0.5 a +0.5
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
 
-    // Atualiza destino com rotação limitada e invertida no eixo X para efeito realista
     target.current.rotateX = -y * maxRotation;
     target.current.rotateY = x * maxRotation;
 
-    target.current.scale = 1.05;
+    target.current.scale = 1.03;
 
     if (!animationFrameId.current) {
       animationFrameId.current = requestAnimationFrame(animate);
@@ -74,7 +73,7 @@ const Simple3DCard: React.FC<Simple3DCardProps> = ({ imageSrc, alt, href }) => {
   }, []);
 
   return (
-    <a href={href} style={{ display: "inline-block" }}>
+    <a href={href} style={{ display: "inline-block" }} className={className}>
       <div
         ref={cardRef}
         className="simple-3d-card"
@@ -93,8 +92,8 @@ const Simple3DCard: React.FC<Simple3DCardProps> = ({ imageSrc, alt, href }) => {
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
           background: #eee;
           will-change: transform;
-          perspective: 1000px;
           cursor: pointer;
+          transform-style: preserve-3d;
           transition: box-shadow 0.3s ease;
         }
 
@@ -109,6 +108,7 @@ const Simple3DCard: React.FC<Simple3DCardProps> = ({ imageSrc, alt, href }) => {
           display: block;
           pointer-events: none;
           user-select: none;
+          border-radius: 20px;
         }
       `}</style>
     </a>
