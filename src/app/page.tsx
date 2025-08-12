@@ -12,10 +12,10 @@ export default function LandingPage() {
   const [isPaused, setIsPaused] = useState(false);
 
   const cards = [
-    { id: 1, href: "/Produtos", imgSrc: "/landingpage.png" },
-    { id: 2, href: "/Produtos", imgSrc: "/erpsolu.png" },
-    { id: 3, href: "/Produtos", imgSrc: "/pcpsolu.png" },
-    { id: 4, href: "/Produtos", imgSrc: "/sla.png" },
+    { id: 1, href: "/produtos", imgSrc: "/landingpage.png" },
+    { id: 2, href: "/produtos", imgSrc: "/erpsolu.png" },
+    { id: 3, href: "/produtos", imgSrc: "/pcpsolu.png" },
+    { id: 4, href: "/produtos", imgSrc: "/sla.png" },
   ];
 
   const cardWidth = 320;
