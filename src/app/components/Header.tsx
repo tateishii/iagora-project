@@ -24,9 +24,9 @@ export default function Header() {
           </Link>
           <nav>
             <Link href="/" scroll={true} style={{ color: "white", textDecoration: "none", fontWeight: "600" }}>Home</Link>
-            <Link href="/Sobre" style={{ color: "white", textDecoration: "none", fontWeight: "600" }}>Sobre</Link>
-            <Link href="/Produtos" style={{ color: "white", textDecoration: "none", fontWeight: "600" }}>Produtos</Link>
-            <Link href="/Servicos" style={{ color: "white", textDecoration: "none", fontWeight: "600" }}>Serviços</Link>
+            <Link href="/sobre" style={{ color: "white", textDecoration: "none", fontWeight: "600" }}>Sobre</Link>
+            <Link href="/produtos" style={{ color: "white", textDecoration: "none", fontWeight: "600" }}>Produtos</Link>
+            <Link href="/servicos" style={{ color: "white", textDecoration: "none", fontWeight: "600" }}>Serviços</Link>
             {/* <Link href="/contato" className="link">Contato</Link> */}
           </nav>
         </div>
