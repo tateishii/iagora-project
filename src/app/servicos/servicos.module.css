@@ -114,6 +114,24 @@
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
+.extraBalloon {
+  position: absolute;
+  background: white;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  z-index: 10;
+  pointer-events: none;
+}
+
+
+.arrow {
+  height: 4px;
+  background: linear-gradient(90deg, #0074bb, #00c2ff);
+  margin-top: 0.5rem;
+  border-radius: 2px;
+}
+
 .from-left {
   transform: translateX(-50px);
 }
