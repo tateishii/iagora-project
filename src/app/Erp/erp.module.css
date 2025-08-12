@@ -75,11 +75,13 @@
 }
 
 .erpLogo {
-    position: absolute;
-    top: 40px;
-    left: 420px;
-    width: 300px;
+    max-width: 300px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    margin-bottom: 1rem;
+    display: block;
 }
+
 /* 
 .images img {
     max-width: 300px;
@@ -177,6 +179,12 @@
 @media (max-width: 900px) {
     .presentationContent {
         flex-direction: column;
+        align-items: center;
+    }
+
+    .erpLogo {
+        margin: 0 0 1.5rem 0;
+        max-width: 70%;
     }
 
     .presentationText {

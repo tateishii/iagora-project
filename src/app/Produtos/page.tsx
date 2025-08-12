@@ -13,7 +13,7 @@ export default function Produtos() {
       title: "Landing Pages Personalizados",
       description:
         "Criamos landing pages totalmente personalizadas para impulsionar as vendas e maximizar a conversão. Desenvolvemos páginas com design responsivo, foco na experiência do usuário e integração com sistemas de estoque, catálogo de produtos e painel administrativo. Ideal para empresas que desejam divulgar seus produtos ou serviços com eficiência, atrair leads qualificados e automatizar processos.",
-      href: "/Landing",
+      href: "/LandingPages",
     },
     {
       imgSrc: "/erp.png",
