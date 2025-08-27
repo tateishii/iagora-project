@@ -11,52 +11,72 @@ export default function Servicos() {
   const balloons = [
     {
       titulo: "Desenvolvimento Web",
-      descricao: "Criação de sites, sistemas web e plataformas sob medida para o seu negócio.",
-      style: { top: "30px", left: "6%" },
-      extraPosition: { top: "130px", left: "2%" },
+      descricao:
+        "Criação de sites, sistemas web e plataformas sob medida para o seu negócio.",
+      style: { top: "120px", left: "6%" },
       from: "left",
       extraContent: {
-        titulo: "Mais detalhes Desenvolvimento",
-        descricao: "Texto diferente",
-      }
+        titulo: "Desenvolvimento Web Avançado",
+        descricao:
+          "Sites modernos, responsivos e otimizados para performance e SEO.",
+      },
     },
     {
       titulo: "Cloud Computing",
-      descricao: "Migração, gerenciamento e otimização de ambientes em nuvem como AWS, Azure e Google Cloud.",
-      style: { top: "30px", right: "-20%" },
-      extraPosition: { top: "130px", right: "2%" },
+      descricao:
+        "Migração, gerenciamento e otimização de ambientes em nuvem como AWS, Azure e Google Cloud.",
+      style: { top: "120px", right: "-20%" },
       from: "right",
       extraContent: {
-        titulo: "Mais coisas skkssk",
-        descricao: "sjsososksoso",
-      }
+        titulo: "Cloud Computing Profissional",
+        descricao:
+          "Gerenciamento completo de nuvem, segurança, backup e escalabilidade.",
+      },
     },
     {
       titulo: "Consultoria em TI",
-      descricao: "Análise estratégica e otimização de processos tecnológicos com foco em resultados.",
+      descricao:
+        "Análise estratégica e otimização de processos tecnológicos com foco em resultados.",
       style: { top: "250px", left: "30%" },
-      extraPosition: { top: "60px", left: "45%" },
       from: "left",
+      extraContent: {
+        titulo: "Consultoria Estratégica",
+        descricao:
+          "Orientação e soluções personalizadas para melhorar eficiência e resultados.",
+      },
     },
     {
       titulo: "Aplicativos Mobile",
-      descricao: "Desenvolvimento de aplicativos iOS e Android com alta performance.",
+      descricao:
+        "Desenvolvimento de aplicativos iOS e Android com alta performance.",
       style: { top: "250px", right: "5%" },
-      extraPosition: { top: "60px", right: "40%" },
       from: "right",
+      extraContent: {
+        titulo: "Apps Mobile Profissionais",
+        descricao:
+          "Aplicativos intuitivos e rápidos, focados na melhor experiência do usuário.",
+      },
     },
     {
       titulo: "Suporte Técnico e Help Desk",
-      descricao: "Atendimento remoto e presencial com agilidade, confiança e SLA personalizado.",
+      descricao:
+        "Atendimento remoto e presencial com agilidade, confiança e SLA personalizado.",
       style: { top: "450px", left: "53%" },
-      extraPosition: { top: "570px", right: "20%"},
       from: "left",
+      extraContent: {
+        titulo: "Suporte Premium",
+        descricao:
+          "Assistência técnica ágil, confiável e focada na continuidade do seu negócio.",
+      },
     },
   ];
 
   const balloonsSectionRef = useRef<HTMLElement>(null);
   const [visible, setVisible] = useState(false);
   const [activeBalloon, setActiveBalloon] = useState<number | null>(null);
+  const [extraPos, setExtraPos] = useState<{ top: number; left: number } | null>(
+    null
+  );
 
   useEffect(() => {
     const section = balloonsSectionRef.current;
@@ -79,6 +99,34 @@ export default function Servicos() {
     };
   }, []);
 
+  const handleMouseEnter = (index: number, e?: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    setActiveBalloon(index);
+
+    if (!e) return;
+    const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+    const parentRect =
+      balloonsSectionRef.current?.getBoundingClientRect() || { top: 0, left: 0 };
+
+    let left = rect.left - parentRect.left + rect.width / 2;
+
+    // Ajuste para balões próximos da borda direita
+    if (rect.right > window.innerWidth - 150) {
+      left = rect.left - parentRect.left + rect.width / 2 - 130;
+    }
+
+    setExtraPos({
+      top: rect.top - parentRect.top - 80,
+      left,
+    });
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const related = e.relatedTarget as HTMLElement | null;
+    if (related && related.classList.contains(styles.extraBalloon)) return;
+    setActiveBalloon(null);
+    setExtraPos(null);
+  };
+
   return (
     <main className={styles.main}>
       <Header />
@@ -100,7 +148,9 @@ export default function Servicos() {
               animate={{ x: 0, opacity: 1 }}
               transition={{ type: "spring", stiffness: 50, delay: 0.6 }}
             >
-              Sua visão se torna realidade com nossas soluções digitais personalizadas. Sites, apps e sistemas que geram resultados, com a inteligência e o suporte que seu negócio merece.
+              Sua visão se torna realidade com nossas soluções digitais
+              personalizadas. Sites, apps e sistemas que geram resultados, com a
+              inteligência e o suporte que seu negócio merece.
             </motion.p>
           </div>
         </div>
@@ -116,8 +166,8 @@ export default function Servicos() {
                   key={index}
                   className={`${styles.balloon} ${visible ? styles.visible : ""} ${styles["from-" + from]}`}
                   style={style}
-                  onMouseEnter={() => setActiveBalloon(index)}
-                  onMouseLeave={() => setActiveBalloon(null)}
+                  onMouseEnter={(e) => handleMouseEnter(index, e)}
+                  onMouseLeave={handleMouseLeave}
                   initial={{ scale: 1 }}
                   animate={{ scale: activeBalloon === index ? 1.05 : 1 }}
                   transition={{ type: "spring", stiffness: 300 }}
@@ -136,21 +186,28 @@ export default function Servicos() {
                 </motion.div>
               ))}
 
-              {activeBalloon !== null && (
-                <motion.div
-                  className={styles.extraBalloon}
-                  style={balloons[activeBalloon].extraPosition}
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 50 }}
-                  transition={{ duration: 0.4 }}
-                >
-
-                  <h3>{balloons[activeBalloon].titulo}</h3>
-                  <p>{balloons[activeBalloon].descricao}</p>
-                </motion.div>
-              )}
-
+              <AnimatePresence>
+                {activeBalloon !== null && extraPos && (
+                  <motion.div
+                    className={styles.extraBalloon}
+                    style={{
+                      top: extraPos.top,
+                      left: extraPos.left,
+                      transform: "translateX(-50%)",
+                      position: "absolute",
+                    }}
+                    onMouseEnter={() => setActiveBalloon(activeBalloon)}
+                    onMouseLeave={handleMouseLeave}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    <h3>{balloons[activeBalloon].extraContent?.titulo || balloons[activeBalloon].titulo}</h3>
+                    <p>{balloons[activeBalloon].extraContent?.descricao || balloons[activeBalloon].descricao}</p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </div>
         </div>
