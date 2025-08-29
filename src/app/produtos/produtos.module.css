@@ -2,12 +2,14 @@
   scroll-behavior: smooth;
 }
 
+/* Seção superior com imagem de fundo */
 .topSection {
   position: relative;
   height: 100vh;
   background: none;
 }
 
+/* Overlay escura + gradiente */
 .overlay {
   background-image:
     linear-gradient(to bottom, rgba(26, 26, 26, 0) 65%, #646464ff 100%),
@@ -44,16 +46,33 @@
   pointer-events: none;
 }
 
+/* Conteúdo textual */
 .content {
   position: relative;
   z-index: 2;
   max-width: 700px;
 }
 
+/* Título e parágrafo */
+.content h1 {
+  font-size: 32px;
+  font-weight: bold;
+  color: #0074bb;
+  margin-bottom: 20px;
+}
+
+.content p {
+  font-size: 24px;
+  color: #fff;
+  line-height: 1.5;
+}
+
+/* Cards */
 .cardsContainer {
   display: flex;
   gap: 2rem;
   justify-content: center;
+  flex-wrap: wrap;
   padding: 4rem 2rem;
   background-color: white;
   position: relative;
@@ -62,9 +81,8 @@
 
 .card {
   position: relative;
-  width: 300px;
-  height: 360px;
-  background: linear-gradient(to bottom, #f0f0f0, #ffffff);
+  width: 300px;      
+  height: 360px;      
   border-radius: 20px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
   overflow: hidden;
@@ -88,7 +106,7 @@
   bottom: 0;
   height: 140px;
   pointer-events: none;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #fff 100%);
   z-index: 2;
 }
 
@@ -103,7 +121,7 @@
 .cardTitle {
   font-size: 20px;
   font-weight: bold;
-  color: #f3f3f3ff;
+  color: #f3f3f3;
   transition: opacity 0.3s ease;
 }
 
@@ -136,36 +154,68 @@
   text-align: left;
 }
 
-/* Responsividade */
 
+
+/* Tablets  */
 @media (max-width: 900px) {
   .overlay {
     padding-left: 30px;
     padding-top: 200px;
   }
 
+  .content h1 {
+    font-size: 28px;
+  }
+
+  .content p {
+    font-size: 20px;
+  }
+
   .cardsContainer {
-    flex-wrap: wrap;
     justify-content: center;
+    gap: 1.5rem;
   }
 
   .card {
-    width: 100%;
-    max-width: 320px;
+    width: 300px;    
+    height: 360px;
+    padding: 1.8rem 1rem;
+  }
+
+  .overlayContent {
+    font-size: 15px;
   }
 }
 
+/* Celulares */
 @media (max-width: 480px) {
-  .title {
+  .overlay {
+    padding-left: 15px;
+    padding-top: 300px;
+  }
+
+  .content h1 {
     font-size: 24px !important;
   }
 
   .content p {
-    font-size: 18px !important;
+    font-size: 16px !important;
+  }
+
+  .cardsContainer {
+    flex-direction: column; 
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .card {
+    width: 300px;       
+    height: 360px;    
+    padding: 1.5rem 1rem;
   }
 
   .cardTitle {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .overlayContent {

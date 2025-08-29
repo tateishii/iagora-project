@@ -1,4 +1,3 @@
-/* ====== Desktop (original) ====== */
 .hero {
   background-image: url("/fundo6.png");
   background-size: cover;
@@ -219,7 +218,6 @@
   box-sizing: border-box;
 }
 
-/* ================= Responsividade ================= */
 
 /* Tablets grandes */
 @media (max-width: 1024px) {

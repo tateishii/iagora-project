@@ -15,7 +15,7 @@
   flex-direction: column;
 }
 
-/* Camada escura cobrindo toda a imagem */
+/* Fundo escuro*/
 .overlay {
   background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
@@ -27,10 +27,10 @@
   max-width: 1400px;
   margin: 0 auto;
   box-sizing: border-box;
-  padding: 100px 80px 40px 80px; /* padding-top suficiente para header fixo */
+  padding: 100px 80px 40px 80px; 
 }
 
-/* Wrapper do conteúdo principal */
+/* Wrapper */
 .content {
   max-width: 700px;
   margin-bottom: 40px;
@@ -61,14 +61,14 @@
 .cardsContainer {
   display: flex;
   gap: 40px;
-  flex-wrap: wrap; /* permite quebrar */
+  flex-wrap: wrap; 
 }
 
 .card {
   background-color: rgba(0, 0, 0, 0.3);
   padding: 30px;
   border-radius: 12px;
-  flex: 1 1 45%;   /* em telas médias, 2 por linha */
+  flex: 1 1 45%;   
   min-width: 280px;
   box-sizing: border-box;
 }
@@ -117,12 +117,12 @@
   position: relative;
 }
 
-/* ================= Responsividade ================= */
 
-/* Tablets (até 900px) */
+
+/* Tablets */
 @media (max-width: 900px) {
   .overlay {
-    padding: 120px 30px 30px 30px; /* aumenta o topo para header fixo */
+    padding: 120px 30px 30px 30px;
   }
 
   .cardsContainer {
@@ -150,10 +150,10 @@
   }
 }
 
-/* Celulares (até 480px) */
+/* Celulares  */
 @media (max-width: 480px) {
   .overlay {
-    padding: 140px 15px 20px 15px; /* ainda mais topo para mobile */
+    padding: 140px 15px 20px 15px; 
   }
 
   .title {
@@ -171,7 +171,7 @@
   }
 }
 
-/* Garante que imagens não quebrem layout */
+/* Para as imagens não quebrarem */
 .img {
   max-width: 100%;
   height: auto;
