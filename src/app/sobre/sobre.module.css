@@ -24,11 +24,18 @@
   flex-direction: column;
   justify-content: flex-start;
   overflow-y: auto;
+
+  /* Centraliza e limita em telas grandes */
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .content {
   max-width: 700px;
   margin-bottom: 40px;
+  padding: 0 15px; /* respiro lateral em telas pequenas */
+  box-sizing: border-box;
 }
 
 .title {
@@ -41,6 +48,7 @@
 .description {
   font-size: 22px;
   color: #ffffff;
+  line-height: 1.6;
 }
 
 .divider {
@@ -53,27 +61,29 @@
 .cardsContainer {
   display: flex;
   gap: 40px;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* permite quebrar */
 }
 
 .card {
   background-color: rgba(0, 0, 0, 0.3);
   padding: 30px;
   border-radius: 12px;
-  flex: 1;
+  flex: 1 1 45%;   /* em telas médias, 2 por linha */
   min-width: 280px;
+  box-sizing: border-box;
 }
 
 .bottomTitle {
   font-size: 28px;
   font-weight: bold;
   margin-bottom: 16px;
-  color: #ffffffff;
+  color: #fff;
 }
 
 .bottomText {
   font-size: 20px;
-  color: #ffffffff;
+  color: #fff;
+  line-height: 1.5;
 }
 
 .topics {
@@ -87,14 +97,14 @@
   margin-bottom: 12px;
   position: relative;
   padding-left: 24px;
-  color: #ffffffff;
+  color: #fff;
 }
 
 .topics li::before {
   content: "";
   width: 8px;
   height: 8px;
-  background-color: #ffffffff;
+  background-color: #fff;
   border-radius: 50%;
   position: absolute;
   left: 0;
@@ -103,21 +113,25 @@
 
 .footer {
   margin-top: auto;
+  width: 100%;
+  position: relative; /* garante que não sobreponha */
 }
 
 /* Responsividade */
 
+/* Tablets (até 900px) */
 @media (max-width: 900px) {
   .overlay {
     padding: 60px 30px 30px 30px;
   }
 
   .cardsContainer {
-    flex-direction: column;
+    flex-direction: column; /* vira coluna */
     gap: 24px;
   }
 
   .card {
+    flex: 1 1 100%;
     min-width: auto;
   }
 
@@ -136,6 +150,7 @@
   }
 }
 
+/* Celulares (até 480px) */
 @media (max-width: 480px) {
   .overlay {
     padding: 40px 15px 20px 15px;
@@ -154,4 +169,11 @@
   .topics li {
     font-size: 16px;
   }
+}
+
+/* Garante que imagens não quebrem layout */
+.img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }

@@ -7,10 +7,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -20,14 +17,13 @@ export default function Header() {
       <header className={scrolled ? "header shrink" : "header"}>
         <div className="container">
           <Link href="/" scroll={true}>
-            <img src="/logo.png" className="logo" alt="Logo da empresa" style={{ cursor: "pointer", display: "block" }} />
+            <img src="/logo.png" className="logo" alt="Logo da empresa" />
           </Link>
           <nav>
-            <Link href="/" scroll={true} style={{ color: "white", textDecoration: "none", fontWeight: "600" }}>Home</Link>
-            <Link href="/sobre" style={{ color: "white", textDecoration: "none", fontWeight: "600" }}>Sobre</Link>
-            <Link href="/produtos" style={{ color: "white", textDecoration: "none", fontWeight: "600" }}>Produtos</Link>
-            <Link href="/servicos" style={{ color: "white", textDecoration: "none", fontWeight: "600" }}>Serviços</Link>
-            {/* <Link href="/contato" className="link">Contato</Link> */}
+            <Link href="/">Home</Link>
+            <Link href="/sobre">Sobre</Link>
+            <Link href="/produtos">Produtos</Link>
+            <Link href="/servicos">Serviços</Link>
           </nav>
         </div>
 
@@ -37,15 +33,12 @@ export default function Header() {
             backdrop-filter: blur(4px);
             position: fixed;
             top: 0;
-            left: 0;
             width: 100%;
-            z-index: 1000;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
             height: 70px;
-            align-items: center;
-            transition: all 0.3s ease;
             display: flex;
             align-items: center;
+            z-index: 1000;
+            transition: all 0.3s ease;
           }
 
           .shrink {
@@ -54,16 +47,13 @@ export default function Header() {
 
           .container {
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
             width: 100%;
             padding: 0 3rem;
-            height: 100%;
-            color: white;
           }
 
           .logo {
-            display: block;
             height: 100px;
             object-fit: contain;
             transition: all 0.3s ease;
@@ -78,19 +68,27 @@ export default function Header() {
             gap: 2rem;
           }
 
-          .link {
-            color: black;
+          nav a {
+            color: white;
             text-decoration: none;
             font-weight: 600;
-            cursor: pointer;
-            transition: color 0.3s ease;
           }
 
-          .link:hover {
-            color: #0074bb;
+          /* ===== MOBILE ===== */
+          @media (max-width: 768px) {
+            .logo {
+              display: none;
+            }
+
+            /* Faz o container não ter logo e centralizar nav */
+            .container {
+              justify-content: center;
+            }
+
+            nav {
+              gap: 1.5rem;
+            }
           }
-
-
         `}</style>
       </header>
     </>

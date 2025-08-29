@@ -1,46 +1,45 @@
-// components/Footer.jsx
+"use client";
+
 import React from "react";
 
 export default function Footer() {
   return (
-    <>
-      <footer className="footer-final">
-        <div className="footer-left">
-          <h3>IAgora Tecnologia</h3>
-          <p>© 2025 Todos os direitos reservados.</p>
-        </div>
-        <div className="footer-right">
-          <a
-            href="https://www.instagram.com/iagora.tec?igsh=MTZmYm5nbHJqcHNucw=="
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-          >
-            <img src="/instagram-icon.svg" alt="Instagram" />
-          </a>
-          <a
-            href="https://wa.me/5511956538444"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="WhatsApp"
-          >
-            <img src="/whatsapp-icon.svg" alt="WhatsApp" />
-          </a>
-        </div>
-      </footer>
+    <footer className="footer-final">
+      <div className="footer-left">
+        <h3>IAgora Tecnologia</h3>
+        <p>© 2025 Todos os direitos reservados.</p>
+      </div>
+      <div className="footer-right">
+        <a
+          href="https://www.instagram.com/iagora.tec"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src="/instagram-icon.svg" alt="Instagram" />
+        </a>
+        <a
+          href="https://wa.me/5511956538444"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src="/whatsapp-icon.svg" alt="WhatsApp" />
+        </a>
+      </div>
 
       <style jsx>{`
         .footer-final {
+          width: 100%;
           background: rgba(0, 0, 0, 0.9);
           backdrop-filter: blur(4px);
           color: white;
           display: flex;
           justify-content: space-between;
           align-items: center;
-          padding: 0.3rem 0.9rem;
-          font-family: 'Arial', sans-serif;
+          padding: 0.5rem 1rem;
+          font-family: "Arial", sans-serif;
           flex-wrap: wrap;
           gap: 1rem;
+          box-sizing: border-box;
         }
 
         .footer-left h3 {
@@ -55,8 +54,12 @@ export default function Footer() {
           opacity: 0.7;
         }
 
+        .footer-right {
+          display: flex;
+          gap: 1rem;
+        }
+
         .footer-right a {
-          margin-left: 1rem;
           display: inline-block;
           transition: opacity 0.3s ease;
         }
@@ -69,17 +72,20 @@ export default function Footer() {
           width: 27px;
           height: 28px;
           object-fit: contain;
-          cursor: pointer;
         }
 
-        .footer-right img.whatsapp {
-          width: 40px;
-          height: 40px;
-          object-fit: contain;
-          margin-top: 4px;
-        }
+        @media (max-width: 768px) {
+          .footer-final {
+            flex-direction: column;
+            text-align: center;
+            gap: 0.5rem;
+          }
 
+          .footer-right {
+            justify-content: center;
+          }
+        }
       `}</style>
-    </>
+    </footer>
   );
 }

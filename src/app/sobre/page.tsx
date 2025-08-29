@@ -3,7 +3,7 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { motion } from "framer-motion";
-import styles from "./sobre.module.css"; 
+import styles from "./sobre.module.css";
 
 export default function Sobre() {
   return (
@@ -39,8 +39,7 @@ export default function Sobre() {
                 📖 Nossa História
               </motion.h2>
               <p className={styles.bottomText}>
-                Fundada em 2024, a IAgora nasceu com a missão de transformar o cenário tecnológico através do desenvolvimento de sistemas inovadores e da automação inteligente. Contamos com uma equipe altamente qualificada, comprometida em simplificar processos e abrir novos caminhos para o futuro digital.
-              </p>
+                Com profissionais de longa bagagem, a IAgora nasceu com a missão de transformar o cenário tecnológico através do desenvolvimento de sistemas inovadores e da automação inteligente. Contamos com uma equipe altamente qualificada, comprometida em simplificar processos e abrir novos caminhos para o futuro digital.              </p>
             </div>
             <div className={styles.card}>
               <motion.h2
