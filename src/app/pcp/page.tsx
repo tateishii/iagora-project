@@ -27,8 +27,10 @@ export default function Pcp() {
           <div className={styles.presentationContent}>
             <img src="/negreira.png" alt="Logo Negreira" className={styles.pcpLogo} />
             <p className={styles.presentationText}>
-              Atuamos como parceiro técnico da Negreira, oferecendo serviços de manutenção, suporte e customização para o sistema PCP adquirido por eles.
-              Nosso compromisso é manter sua produção fluindo com segurança e eficiência.
+              Se a sua produção precisa de mais eficiência, nós temos a solução. 
+              Nosso sistema de Planejamento e Controle da Produção (PCP) garante 
+              que você tenha um fluxo de trabalho seguro e contínuo. Além disso, oferecemos suporte,
+              manutenção e customização para garantir que o sistema se adapte perfeitamente às suas necessidades.
             </p>
           </div>
         </section>
